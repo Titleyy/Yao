@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<image xsdVersion="2.0" version="1.3.0">
+	<functionalGroup name="Motorcontrol">
+		<componentInstance name="g_mctrlExampleParam" displayName="MctrlExample" sourceName="MctrlExample">
+			<param name="enableControl" displayName="Enable control" sourceName="enableControl" index="0x5100" isPartOfParSet="false" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+			<param name="enablePowerStage" displayName="Enable powerstage" sourceName="enablePowerStage" index="0x5101" isPartOfParSet="false" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+			<param name="rotorAlignmentTime" displayName="Alignment time" sourceName="rotorAlignmentTime" index="0x5102" userLevel="1" dataTypeTU="uint16_t" physicalUnit="s" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>6553</maxTU>
+				<minPU>0</minPU>
+				<maxPU>65.53</maxPU>
+			</param>
+			<param name="controlMode" displayName="Control mode" sourceName="controlMode" index="0x5104" isPartOfParSet="false" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="VtoF" value="0"/>
+				<enumEntry name="ItoF_Foc" value="1"/>
+			</param>
+			<param name="referenceSpeed" displayName="Reference speed" sourceName="referenceSpeed" index="0x5106" isPartOfParSet="false" dataTypeTU="int16_t" physicalUnit="rpm" decimalPlaces="0" step="1.0">
+				<minTU>-4000</minTU>
+				<maxTU>4000</maxTU>
+				<minPU>-4000</minPU>
+				<maxPU>4000</maxPU>
+			</param>
+			<param name="clrFaultFoc" displayName="Clear fault FocSolution" sourceName="clrFaultFoc" index="0x5105" isPartOfParSet="false" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_focSolutionParam" displayName="FocSolution" sourceName="FocSolution_F16">
+			<param name="startUpCurrent" displayName="Start-up current" sourceName="startUpCurrent" index="0x5000" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="startUpCurrentRampUpRate" displayName="Start-up current ramp up rate" sourceName="startUpCurrentRampUpRate" index="0x5001" dataTypeTU="int16_t" physicalUnit="A/s" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>3331</maxTU>
+				<minPU>0</minPU>
+				<maxPU>3331.0</maxPU>
+			</param>
+			<param name="speedPiPropGain" displayName="Speed pi proportional gain" sourceName="speedPiPropGain" index="0x5002" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="A/rpm" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>2684355</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>268.4355</maxPU>
+			</param>
+			<param name="speedPiIntegGainSamplingTime" displayName="Speed pi integral gain" sourceName="speedPiIntegGainSamplingTime" index="0x5003" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="A/rpms" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>1787780136</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>178778.0136</maxPU>
+			</param>
+			<param name="refCurrentUpperLimit" displayName="Speed pi output upper limit" sourceName="refCurrentUpperLimit" index="0x5004" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="refCurrentLowerLimit" displayName="Speed pi output lower limit" sourceName="refCurrentLowerLimit" index="0x5005" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="refSpeedUpperLimit" displayName="Reference speed upper limit" sourceName="refSpeedUpperLimit" index="0x5006" isPartOfParDownload="true" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="refSpeedLowerLimit" displayName="Reference speed lower limit" sourceName="refSpeedLowerLimit" index="0x5007" isPartOfParDownload="true" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="minimumSpeedThreshold" displayName="Speed threshold for transition from ramp down to standby" sourceName="minimumSpeedThreshold" index="0x5008" isPartOfParDownload="true" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="speedRampUpRateOpenLoop" displayName="Open loop speed ramp up rate" sourceName="speedRampUpRateOpenLoop" index="0x5009" isPartOfParDownload="true" dataTypeTU="uint32_t" physicalUnit="rpm/s" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>5329780</maxTU>
+				<minPU>0</minPU>
+				<maxPU>5329780.0</maxPU>
+			</param>
+			<param name="speedRampDownRateOpenLoop" displayName="Open loop speed ramp down rate" sourceName="speedRampDownRateOpenLoop" index="0x500A" isPartOfParDownload="true" dataTypeTU="uint32_t" physicalUnit="rpm/s" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>5329780</maxTU>
+				<minPU>0</minPU>
+				<maxPU>5329780.0</maxPU>
+			</param>
+			<param name="speedRampUpRateClosedLoop" displayName="Closed loop speed ramp up rate" sourceName="speedRampUpRateClosedLoop" index="0x500B" isPartOfParDownload="true" dataTypeTU="uint32_t" physicalUnit="rpm/s" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>5329780</maxTU>
+				<minPU>0</minPU>
+				<maxPU>5329780.0</maxPU>
+			</param>
+			<param name="speedRampDownRateClosedLoop" displayName="Closed loop speed ramp down rate" sourceName="speedRampDownRateClosedLoop" index="0x500C" isPartOfParDownload="true" dataTypeTU="uint32_t" physicalUnit="rpm/s" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>5329780</maxTU>
+				<minPU>0</minPU>
+				<maxPU>5329780.0</maxPU>
+			</param>
+			<param name="qCurrentAtTransition" displayName="Quadrature current at transition" sourceName="qCurrentAtTransition" index="0x500D" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="transitionAngleTolerance" displayName="Transition angle tolerance" sourceName="transitionAngleTolerance" index="0x500E" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="deg" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>9000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>90.0</maxPU>
+			</param>
+			<param name="transitionTimeLimit" displayName="Maximum transition time between open and closed loop" sourceName="transitionTimeLimit" index="0x500F" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="ms" decimalPlaces="0" step="2.0">
+				<minTU>2</minTU>
+				<maxTU>98368</maxTU>
+				<minPU>2.0</minPU>
+				<maxPU>98368.0</maxPU>
+			</param>
+			<param name="transitionDownDCurrentScaling" displayName="Transition down d current scaling factor" sourceName="transitionDownDCurrentScaling" index="0x5010" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t">
+				<minTU>0</minTU>
+				<maxTU>2000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>2.0</maxPU>
+			</param>
+			<param name="transitionSpeedUp" displayName="Transition speed up in % of base_mech_speed" sourceName="transitionSpeedUp" index="0x5011" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="transitionSpeedBand" displayName="Transition speed band" sourceName="transitionSpeedBand" index="0x5012" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="frictionConstant" displayName="Viscous friction constant" sourceName="frictionConstant" index="0x5014" userLevel="1" dataTypeTU="int16_t" physicalUnit="mNms" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>1711</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>0.1711</maxPU>
+			</param>
+			<param name="initStartupCurrent" displayName="Initial Start-up current" sourceName="initStartupCurrent" index="0x5016" isPartOfParDownload="true" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="speedPiAntiWindupGain" displayName="Speed pi anti-windup gain" sourceName="speedPiAntiWindupGain" index="0x5017" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="1/rpms" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>357675490</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>35767.5491</maxPU>
+			</param>
+			<param name="state" displayName="State" sourceName="state" index="0x5020" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="init" value="0"/>
+				<enumEntry name="off" value="1"/>
+				<enumEntry name="standBy" value="2"/>
+				<enumEntry name="fault" value="3"/>
+				<enumEntry name="run" value="4"/>
+				<enumEntry name="rampDown" value="5"/>
+				<enumEntry name="startAngleIdent" value="6"/>
+			</param>
+			<param name="subState" displayName="Sub state" sourceName="subState" index="0x5021" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="openLoop" value="0"/>
+				<enumEntry name="transitionUp" value="1"/>
+				<enumEntry name="closedLoop" value="2"/>
+				<enumEntry name="transitionDown" value="3"/>
+			</param>
+			<param name="actualControlMode" displayName="Actual control mode" sourceName="actualControlMode" index="0x5022" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="VtoF" value="0"/>
+				<enumEntry name="ItoF_Foc" value="1"/>
+			</param>
+			<param name="estimatedSpeed" displayName="Estimated speed" sourceName="estimatedSpeed" index="0x5023" accessMode="readOnly" dataTypeTU="int16_t" physicalUnit="rpm" decimalPlaces="0" step="1.0">
+				<minTU>-4000</minTU>
+				<maxTU>4000</maxTU>
+				<minPU>-4000</minPU>
+				<maxPU>4000</maxPU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_modulatorParam" displayName="Modulator" sourceName="Modulator_F16">
+			<param name="measurementTime" displayName="Current sense Measurement time" sourceName="measurementTime" index="0x4000" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="us" decimalPlaces="2" step="0.05">
+				<minTU>0</minTU>
+				<maxTU>500</maxTU>
+				<minPU>0</minPU>
+				<maxPU>5.0</maxPU>
+			</param>
+			<param name="deadTime" displayName="Dead time" sourceName="deadTime" index="0x4001" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="us" decimalPlaces="2" step="0.05">
+				<minTU>5</minTU>
+				<maxTU>200</maxTU>
+				<minPU>0.05</minPU>
+				<maxPU>2.0</maxPU>
+			</param>
+			<param name="driverDelay" displayName="Timedelay of Powerstage Driver" sourceName="driverDelay" index="0x4002" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="us" decimalPlaces="2" step="0.05">
+				<minTU>0</minTU>
+				<maxTU>200</maxTU>
+				<minPU>0</minPU>
+				<maxPU>2.0</maxPU>
+			</param>
+			<param name="ringingTime" displayName="Current sense Ringing time" sourceName="ringingTime" index="0x4003" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="us" decimalPlaces="2" step="0.05">
+				<minTU>5</minTU>
+				<maxTU>200</maxTU>
+				<minPU>0.05</minPU>
+				<maxPU>2.0</maxPU>
+			</param>
+			<param name="period" displayName="Period of the switching frequency" sourceName="period" index="0x4004" isPartOfParDownload="true" dataTypeTU="int16_t" physicalUnit="ticks" decimalPlaces="0" step="1.0">
+				<minTU>-32768</minTU>
+				<maxTU>32767</maxTU>
+				<minPU>-32768</minPU>
+				<maxPU>32767</maxPU>
+			</param>
+			<param name="maxAmplitude" displayName="Modulator max. output voltage" sourceName="maxAmplitude" index="0x4006" isPartOfParDownload="true" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="biDirectionalShiftingThresholdHigh" displayName="Transition threshold high" sourceName="biDirectionalShiftingThresholdHigh" index="0x4007" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="biDirectionalShiftingThresholdLow" displayName="Transition threshold low" sourceName="biDirectionalShiftingThresholdLow" index="0x4008" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="state" displayName="State" sourceName="state" index="0x4010" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="init" value="0"/>
+				<enumEntry name="off" value="1"/>
+				<enumEntry name="on" value="2"/>
+				<enumEntry name="fault" value="3"/>
+				<enumEntry name="brake" value="4"/>
+			</param>
+			<param name="subState" displayName="Sub state" sourceName="subState" index="0x4011" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="bidirectionalTwoPhase" value="0"/>
+				<enumEntry name="bidirectionalThreePhase" value="1"/>
+			</param>
+			<param name="error_maxAmplitudeFlag" displayName="Max amplitude flag" sourceName="error_maxAmplitudeFlag" index="0x4012" accessMode="readOnly" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+			<param name="error_overmodulationFlag" displayName="Over modulation flag" sourceName="error_overmodulationFlag" index="0x4013" accessMode="readOnly" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+			<param name="actualVoltageAmplitude" displayName="Output actual voltage amplitude" sourceName="actualVoltageAmplitude" index="0x4016" accessMode="readOnly" dataTypeTU="int16_t" physicalUnit="V" decimalPlaces="2" step="0.01">
+				<minTU>-2400</minTU>
+				<maxTU>2400</maxTU>
+				<minPU>-24.0</minPU>
+				<maxPU>24.0</maxPU>
+			</param>
+			<param name="actualVoltageAngle" displayName="Output actual voltage angle" sourceName="actualVoltageAngle" index="0x4017" accessMode="readOnly" dataTypeTU="uint32_t" physicalUnit="rad" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>62832</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>6.2832</maxPU>
+			</param>
+			<param name="currentReconstructionInfoSector" displayName="Output current reconstruction info sector" sourceName="currentReconstructionInfoSector" index="0x4018" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>5</maxTU>
+				<minPU>0</minPU>
+				<maxPU>5</maxPU>
+			</param>
+			<param name="currentReconstructionInfoSecondTriggerIsSum" displayName="Output current reconstruction info second trigger is sum" sourceName="currentReconstructionInfoSecondTriggerIsSum" index="0x4019" accessMode="readOnly" userLevel="2" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_fluxEstimatorParam" displayName="FluxEstimator" sourceName="FluxEstimator_F16">
+			<param name="samplingTime" displayName="Sampling time" sourceName="samplingTime" index="0x4100" isPartOfParSet="false" userLevel="2" dataTypeTU="uint16_t" physicalUnit="us" decimalPlaces="0" step="1.0">
+				<minTU>1</minTU>
+				<maxTU>65535</maxTU>
+				<minPU>1</minPU>
+				<maxPU>65535</maxPU>
+			</param>
+			<param name="alphaFilterTimeConstant" displayName="Alpha lowpass time constant" sourceName="alphaFilterTimeConstant" index="0x4101" isPartOfParSet="false" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="us" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>4294967295</maxTU>
+				<minPU>0</minPU>
+				<maxPU>4294967295</maxPU>
+			</param>
+			<param name="betaFilterTimeConstant" displayName="Beta lowpass time constant" sourceName="betaFilterTimeConstant" index="0x4102" isPartOfParSet="false" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="us" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>4294967295</maxTU>
+				<minPU>0</minPU>
+				<maxPU>4294967295</maxPU>
+			</param>
+			<param name="speedFilterTimeConstant" displayName="Speed lowpass time constant" sourceName="speedFilterTimeConstant" index="0x4103" isPartOfParSet="false" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="us" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>4294967295</maxTU>
+				<minPU>0</minPU>
+				<maxPU>4294967295</maxPU>
+			</param>
+			<param name="pllFilterPropGain" displayName="PLL proportional gain" sourceName="pllFilterPropGain" index="0x4104" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>2147483647</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>214748.3647</maxPU>
+			</param>
+			<param name="phaseRes" displayName="Phase resistance" sourceName="phaseRes" index="0x4106" userLevel="1" dataTypeTU="uint32_t" physicalUnit="Ohm">
+				<minTU>0</minTU>
+				<maxTU>4800</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>4.8</maxPU>
+			</param>
+			<param name="phaseIndAdjusted" displayName="Phase inductance adjusted" sourceName="phaseIndAdjusted" index="0x4107" isPartOfParSet="false" userLevel="2" dataTypeTU="int16_t" decimalPlaces="0" step="1.0">
+				<minTU>-32768</minTU>
+				<maxTU>32767</maxTU>
+				<minPU>-32768</minPU>
+				<maxPU>32767</maxPU>
+			</param>
+			<param name="alphaGainAdjusted" displayName="Alpha gain adjusted" sourceName="alphaGainAdjusted" index="0x4108" accessMode="readOnly" isPartOfParSet="false" userLevel="2" dataTypeTU="int16_t" decimalPlaces="0" step="1.0">
+				<minTU>-32768</minTU>
+				<maxTU>32767</maxTU>
+				<minPU>-32768</minPU>
+				<maxPU>32767</maxPU>
+			</param>
+			<param name="betaGainAdjusted" displayName="Beta gain adjusted" sourceName="betaGainAdjusted" index="0x4109" accessMode="readOnly" isPartOfParSet="false" userLevel="2" dataTypeTU="int16_t" decimalPlaces="0" step="1.0">
+				<minTU>-32768</minTU>
+				<maxTU>32767</maxTU>
+				<minPU>-32768</minPU>
+				<maxPU>32767</maxPU>
+			</param>
+			<param name="speed" displayName="Estimated rotor flux speed" sourceName="speed" index="0x4110" accessMode="readOnly" isPartOfParSet="false" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="anglePll" displayName="Rotor flux angle" sourceName="anglePll" index="0x4111" accessMode="readOnly" isPartOfParSet="false" userLevel="1" dataTypeTU="uint32_t" physicalUnit="rad" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>62832</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>6.2832</maxPU>
+			</param>
+			<param name="mode" displayName="Operation mode" sourceName="mode" index="0x4112" accessMode="readOnly" isPartOfParSet="false" userLevel="1" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="Disable" value="0"/>
+				<enumEntry name="Enable" value="1"/>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_vToFControllerParam" displayName="VToFController" sourceName="VToFController_F16">
+			<param name="ratedSpeed" displayName="Rated electrical speed" sourceName="ratedSpeed" index="0x4401" isPartOfParDownload="true" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="cornerSpeed" displayName="Corner electrical speed" sourceName="cornerSpeed" index="0x4402" isPartOfParDownload="true" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="ratedVolt" displayName="Voltage at rated speed" sourceName="ratedVolt" index="0x4405" isPartOfParDownload="true" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="cornerVolt" displayName="Voltage at corner speed" sourceName="cornerVolt" index="0x4403" isPartOfParDownload="true" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="minVolt" displayName="Voltage at minimum speed" sourceName="minVolt" index="0x4404" isPartOfParDownload="true" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="voltageVectorAmplitude" displayName="Amplitude of the output voltage vector" sourceName="voltageVectorAmplitude" index="0x4410" accessMode="readOnly" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="voltageVectorAngle" displayName="Angle of the output voltage vector" sourceName="voltageVectorAngle" index="0x4411" accessMode="readOnly" dataTypeTU="uint32_t" physicalUnit="rad" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>62832</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>6.2832</maxPU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_focControllerParam" displayName="FocController" sourceName="FocController_F16">
+			<param name="currentDPiIntegGainSamplingTime" displayName="Id PI controller Integral gain" sourceName="currentDPiIntegGainSamplingTime" index="0x4200" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="V/As" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>1048544000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>1048544000.0</maxPU>
+			</param>
+			<param name="currentDPiLowerLimit" displayName="Id PI controller Output lower limit" sourceName="currentDPiLowerLimit" index="0x4201" isPartOfParDownload="true" userLevel="1" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>0</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>0.0</maxPU>
+			</param>
+			<param name="currentDPiUpperLimit" displayName="Id PI controller Output upper limit" sourceName="currentDPiUpperLimit" index="0x4202" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="currentDPiPropGain" displayName="Id PI controller Proportional gain" sourceName="currentDPiPropGain" index="0x4203" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="V/A">
+				<minTU>0</minTU>
+				<maxTU>157281600</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>157281.6</maxPU>
+			</param>
+			<param name="currentDPiAntiWindupGainSamplingTime" displayName="Id PI controller Anti windup gain" sourceName="currentDPiAntiWindupGainSamplingTime" index="0x4204" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="1/As" decimalPlaces="1" step="0.1">
+				<minTU>0</minTU>
+				<maxTU>436893333</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>43689333.3</maxPU>
+			</param>
+			<param name="currentQPiIntegGainSamplingTime" displayName="Iq PI controller Integral gain" sourceName="currentQPiIntegGainSamplingTime" index="0x4205" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="V/As" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>1048544000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>1048544000.0</maxPU>
+			</param>
+			<param name="currentQPiLowerLimit" displayName="Iq PI controller Output lower limit" sourceName="currentQPiLowerLimit" index="0x4206" isPartOfParDownload="true" userLevel="1" dataTypeTU="int16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>-10000</minTU>
+				<maxTU>0</maxTU>
+				<minPU>-100.0</minPU>
+				<maxPU>0.0</maxPU>
+			</param>
+			<param name="currentQPiUpperLimit" displayName="Iq PI controller Output upper limit" sourceName="currentQPiUpperLimit" index="0x4207" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="%" decimalPlaces="2" step="0.01">
+				<minTU>0</minTU>
+				<maxTU>10000</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>100.0</maxPU>
+			</param>
+			<param name="currentQPiPropGain" displayName="Iq PI controller Proportional gain" sourceName="currentQPiPropGain" index="0x4208" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="V/A">
+				<minTU>0</minTU>
+				<maxTU>157281600</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>157281.6</maxPU>
+			</param>
+			<param name="currentQPiAntiWindupGainSamplingTime" displayName="Iq PI controller Anti windup gain" sourceName="currentQPiAntiWindupGainSamplingTime" index="0x4209" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint32_t" physicalUnit="1/As" decimalPlaces="1" step="0.1">
+				<minTU>0</minTU>
+				<maxTU>436893333</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>43689333.3</maxPU>
+			</param>
+			<param name="dAntiwindupCtrl" displayName="Voltage saturation status D axis" sourceName="dAntiwindupCtrl" index="0x4210" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="No saturation" value="0"/>
+				<enumEntry name="AntiWindup_positiv" value="1"/>
+				<enumEntry name="AntiWindup_negativ" value="2"/>
+			</param>
+			<param name="qAntiwindupCtrl" displayName="Voltage saturation status Q axis" sourceName="qAntiwindupCtrl" index="0x4211" accessMode="readOnly" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="No saturation" value="0"/>
+				<enumEntry name="AntiWindup_positiv" value="1"/>
+				<enumEntry name="AntiWindup_negativ" value="2"/>
+			</param>
+			<param name="currentDqReal" displayName="D current" sourceName="currentDqReal" index="0x4212" accessMode="readOnly" physicalUnit="A">
+				<minTU>-5000</minTU>
+				<maxTU>5000</maxTU>
+				<minPU>-5.0</minPU>
+				<maxPU>5.0</maxPU>
+			</param>
+			<param name="currentDqImag" displayName="Q current" sourceName="currentDqImag" index="0x4213" accessMode="readOnly" physicalUnit="A">
+				<minTU>-5000</minTU>
+				<maxTU>5000</maxTU>
+				<minPU>-5.0</minPU>
+				<maxPU>5.0</maxPU>
+			</param>
+			<param name="voltageCommandPolarAmplitude" displayName="Reference voltage amplitude" sourceName="voltageCommandPolarAmplitude" index="0x4214" accessMode="readOnly" dataTypeTU="int16_t" decimalPlaces="0" step="1.0">
+				<minTU>-32767</minTU>
+				<maxTU>32767</maxTU>
+				<minPU>-32767</minPU>
+				<maxPU>32767</maxPU>
+			</param>
+			<param name="voltageCommandPolarAngle" displayName="Reference voltage angle" sourceName="voltageCommandPolarAngle" index="0x4215" accessMode="readOnly" dataTypeTU="uint32_t" physicalUnit="rad" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>62832</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>6.2832</maxPU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_iToFParam" displayName="IToFController" sourceName="IToFController_F16">
+			<param name="currentVecAngle" displayName="Current vector angle" sourceName="currentVecAngle" index="0x4312" accessMode="readOnly" dataTypeTU="uint32_t" physicalUnit="rad" decimalPlaces="4" step="0.0001">
+				<minTU>0</minTU>
+				<maxTU>62832</maxTU>
+				<minPU>0.0</minPU>
+				<maxPU>6.2832</maxPU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_bridgeDrvParam" displayName="BridgeDrv" sourceName="BridgeDrv_F16_TLE987">
+			<param name="state" displayName="State" sourceName="state" index="0x3210" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="init" value="0"/>
+				<enumEntry name="off" value="1"/>
+				<enumEntry name="on" value="2"/>
+				<enumEntry name="fault" value="3"/>
+			</param>
+			<param name="error_overcurrent" displayName="Overcurrent flag" sourceName="error_overcurrent" index="0x3211" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+			<param name="error_overvoltage" displayName="Overvoltage flag" sourceName="error_overvoltage" index="0x3212" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+			<param name="error_undervoltage" displayName="Undervoltage flag" sourceName="error_undervoltage" index="0x3213" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="bool" decimalPlaces="0" step="1.0">
+				<minTU>false</minTU>
+				<maxTU>true</maxTU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_measurementADCParam" displayName="MeasurementADC" sourceName="MeasurementADC_F16_TLE987">
+			<param name="csaGain" displayName="CSA gain" sourceName="csaGain" index="0x3100" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="G10" value="0"/>
+				<enumEntry name="G20" value="1"/>
+				<enumEntry name="G40" value="2"/>
+				<enumEntry name="G60" value="3"/>
+			</param>
+			<param name="offset" displayName="CSA offset" sourceName="offset" index="0x3101" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>16384</maxTU>
+				<minPU>0</minPU>
+				<maxPU>16384</maxPU>
+			</param>
+			<param name="calibrateCSA" displayName="Calibrate CSA offset" sourceName="calibrateCSA" index="0x3102" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" decimalPlaces="0" step="1.0">
+				<minTU>0</minTU>
+				<maxTU>16384</maxTU>
+				<minPU>0</minPU>
+				<maxPU>16384</maxPU>
+			</param>
+			<param name="state" displayName="State" sourceName="state" index="0x3110" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="uint8_t" decimalPlaces="0" step="1.0">
+				<enumEntry name="init" value="0"/>
+				<enumEntry name="off" value="1"/>
+				<enumEntry name="on" value="2"/>
+				<enumEntry name="calibration" value="3"/>
+			</param>
+			<param name="shuntCurrents_0" displayName="Measured shunt current 0" sourceName="shuntCurrents_0" index="0x3111" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="int16_t" physicalUnit="A" decimalPlaces="2" step="0.01">
+				<minTU>-500</minTU>
+				<maxTU>500</maxTU>
+				<minPU>-5.0</minPU>
+				<maxPU>5.0</maxPU>
+			</param>
+			<param name="shuntCurrents_1" displayName="Measured shunt current 1" sourceName="shuntCurrents_1" index="0x3112" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="int16_t" physicalUnit="A" decimalPlaces="2" step="0.01">
+				<minTU>-500</minTU>
+				<maxTU>500</maxTU>
+				<minPU>-5.0</minPU>
+				<maxPU>5.0</maxPU>
+			</param>
+			<param name="dcLinkVoltage" displayName="Measured DC link voltage" sourceName="dcLinkVoltage" index="0x3113" accessMode="readOnly" isPartOfParSet="false" dataTypeTU="int16_t" physicalUnit="V" decimalPlaces="2" step="0.01">
+				<minTU>-2400</minTU>
+				<maxTU>2400</maxTU>
+				<minPU>-24.0</minPU>
+				<maxPU>24.0</maxPU>
+			</param>
+		</componentInstance>
+		<componentInstance name="g_patternGenParam" displayName="PatternGen" sourceName="PatternGen_F16_TLE987">
+			<param name="deadTime" displayName="Dead time" sourceName="deadTime" index="0x3000" isPartOfParDownload="true" userLevel="1" dataTypeTU="uint16_t" physicalUnit="us" decimalPlaces="2" step="0.05">
+				<minTU>5</minTU>
+				<maxTU>200</maxTU>
+				<minPU>0.05</minPU>
+				<maxPU>2.0</maxPU>
+			</param>
+			<param name="state" displayName="Status_PatternGenerator" sourceName="state" index="0x3010" accessMode="readOnly" decimalPlaces="0" step="1.0">
+				<enumEntry name="init" value="0"/>
+				<enumEntry name="off" value="1"/>
+				<enumEntry name="on" value="2"/>
+				<enumEntry name="fault" value="3"/>
+				<enumEntry name="brake" value="4"/>
+			</param>
+		</componentInstance>
+	</functionalGroup>
+</image>

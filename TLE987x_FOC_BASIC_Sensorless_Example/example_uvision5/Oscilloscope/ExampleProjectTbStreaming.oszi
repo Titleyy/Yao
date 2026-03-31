@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oszixml version="1.3.1">
+    <checksum>1c38684db0e2ecf58c3b1b11165d9452bb3bb396fc5fdb649438019dc84278f1</checksum>
+    <Settings>
+        <BinaryFile></BinaryFile>
+        <ParameterFile>./ExampleProjectTbStreaming.pxml</ParameterFile>
+        <SelectedInterface>Ethernet</SelectedInterface>
+        <StartScript></StartScript>
+        <BGColor>#f9fff9</BGColor>
+        <ScaleHorz>22</ScaleHorz>
+        <PosHorz>0</PosHorz>
+        <HorzTime>22</HorzTime>
+        <ShowTooltips>0</ShowTooltips>
+        <AlwaysOnTop>0</AlwaysOnTop>
+        <BringToFront>0</BringToFront>
+        <LoadLastProject>0</LoadLastProject>
+        <TriggerMode>0</TriggerMode>
+        <ScrollMode>1</ScrollMode>
+        <LogCommunication>2</LogCommunication>
+        <TabbedView>0</TabbedView>
+        <Server IP="127.0.0.1" Port="50051"/>
+        <Segger HostIF="USB" SerialNo="591112993" Speed="" Host="" SettingsFile="" Device=""/>
+        <UART Port="COM3" Baudrate="1000000" DataBits="8" Parity="None" Stopbits="1" Handshake="None"/>
+        <USB VendorID="" ProductID=""/>
+        <Ethernet IPAddress="192.168.84.66" Port="626"/>
+        <CAN Baudrate="500 kBit/s"/>
+        <LIN Baudrate="300"/>
+        <I2C Baudrate="300" Address=""/>
+        <SPI Baudrate="1 MBit/s" ClockLevelReceiveEdge="Clocklevel low / rising edge" LSBFirst="0" Wordlength="1 Byte"/>
+    </Settings>
+    <Channels>
+        <Channel>
+            <nr>0</nr>
+            <enabled>1</enabled>
+            <symbol>Signal2</symbol>
+            <alias>currentsUVW.u</alias>
+            <address>1b</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#1b9e77</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>1</nr>
+            <enabled>1</enabled>
+            <symbol>Signal3</symbol>
+            <alias>currentsUVW.v</alias>
+            <address>1c</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#d95f02</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>2</nr>
+            <enabled>1</enabled>
+            <symbol>Signal4</symbol>
+            <alias>currentsUVW.w</alias>
+            <address>1d</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#7570b3</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>3</nr>
+            <enabled>1</enabled>
+            <symbol>Signal11</symbol>
+            <alias>rateLimitInSpeedQ15</alias>
+            <address>24</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#e7298a</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>4</nr>
+            <enabled>1</enabled>
+            <symbol>Signal10</symbol>
+            <alias>fluxEstimator.p_output.speedQ15</alias>
+            <address>23</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#66a61e</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>5</nr>
+            <enabled>1</enabled>
+            <symbol>Signal8</symbol>
+            <alias>currentDQ.real</alias>
+            <address>21</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#e6ab0c</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>6</nr>
+            <enabled>1</enabled>
+            <symbol>Signal7</symbol>
+            <alias>currentDQ.imag</alias>
+            <address>20</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#a6761d</color>
+            <linestyle>1</linestyle>
+        </Channel>
+        <Channel>
+            <nr>7</nr>
+            <enabled>1</enabled>
+            <symbol>Signal0</symbol>
+            <alias>sampleCounter</alias>
+            <address>19</address>
+            <type>Unknown</type>
+            <gain>1</gain>
+            <offset>0</offset>
+            <unit></unit>
+            <formula></formula>
+            <acqmode>1</acqmode>
+            <interval>0</interval>
+            <width>1</width>
+            <color>#505050</color>
+            <linestyle>1</linestyle>
+        </Channel>
+    </Channels>
+    <Panels>
+        <Panel>
+            <name>Phase Currents</name>
+            <DispMode>0</DispMode>
+            <X_Y_X></X_Y_X>
+            <X_Y_Y></X_Y_Y>
+            <ScaleHorz>22</ScaleHorz>
+            <PosHorz>0</PosHorz>
+            <GainOffset Channel="0" GainRef="-1" Gain="5455.14" Offset="0"/>
+            <GainOffset Channel="1" GainRef="-1" Gain="1958.14" Offset="0"/>
+            <GainOffset Channel="2" GainRef="-1" Gain="1935.14" Offset="0"/>
+            <GainOffset Channel="3" GainRef="-1" Gain="9362.14" Offset="0"/>
+            <GainOffset Channel="4" GainRef="-1" Gain="1" Offset="0"/>
+            <GainOffset Channel="5" GainRef="-1" Gain="1" Offset="0"/>
+            <GainOffset Channel="6" GainRef="-1" Gain="1" Offset="0"/>
+            <GainOffset Channel="7" GainRef="-1" Gain="1" Offset="0"/>
+            <AxisCoupled>1</AxisCoupled>
+            <CursorCoupled>1</CursorCoupled>
+            <CursorVACoupled>1</CursorVACoupled>
+            <CursorVBCoupled>1</CursorVBCoupled>
+            <CursorHACoupled>1</CursorHACoupled>
+            <CursorHBCoupled>1</CursorHBCoupled>
+            <CursorsLocked>0</CursorsLocked>
+            <BGColor>#f9fff9</BGColor>
+            <GridColor>#464646</GridColor>
+            <GridX>5</GridX>
+            <GridY>7</GridY>
+            <geometry x="0" y="0" width="2146" height="300"/>
+            <EnabledCurves>11100000</EnabledCurves>
+        </Panel>
+        <Panel>
+            <name>Speed</name>
+            <DispMode>0</DispMode>
+            <X_Y_X></X_Y_X>
+            <X_Y_Y></X_Y_Y>
+            <ScaleHorz>22</ScaleHorz>
+            <PosHorz>0</PosHorz>
+            <GainOffset Channel="0" GainRef="-1" Gain="9362.14" Offset="0"/>
+            <GainOffset Channel="1" GainRef="-1" Gain="9362.14" Offset="0"/>
+            <GainOffset Channel="2" GainRef="-1" Gain="1958" Offset="0"/>
+            <GainOffset Channel="3" GainRef="-1" Gain="0.0001" Offset="0"/>
+            <GainOffset Channel="4" GainRef="-1" Gain="50.1429" Offset="0"/>
+            <GainOffset Channel="5" GainRef="-1" Gain="1" Offset="0"/>
+            <GainOffset Channel="6" GainRef="-1" Gain="1" Offset="0"/>
+            <GainOffset Channel="7" GainRef="-1" Gain="1" Offset="0"/>
+            <AxisCoupled>1</AxisCoupled>
+            <CursorCoupled>1</CursorCoupled>
+            <CursorVACoupled>1</CursorVACoupled>
+            <CursorVBCoupled>1</CursorVBCoupled>
+            <CursorHACoupled>1</CursorHACoupled>
+            <CursorHBCoupled>1</CursorHBCoupled>
+            <CursorsLocked>0</CursorsLocked>
+            <BGColor>#f9fff9</BGColor>
+            <GridColor>#464646</GridColor>
+            <GridX>5</GridX>
+            <GridY>7</GridY>
+            <geometry x="0" y="300" width="2146" height="300"/>
+            <EnabledCurves>00011000</EnabledCurves>
+        </Panel>
+        <Panel>
+            <name>DQ Currents</name>
+            <DispMode>0</DispMode>
+            <X_Y_X></X_Y_X>
+            <X_Y_Y></X_Y_Y>
+            <ScaleHorz>22</ScaleHorz>
+            <PosHorz>0</PosHorz>
+            <GainOffset Channel="0" GainRef="-1" Gain="1942.86" Offset="0"/>
+            <GainOffset Channel="1" GainRef="-1" Gain="1942.86" Offset="0"/>
+            <GainOffset Channel="2" GainRef="-1" Gain="1935.14" Offset="0"/>
+            <GainOffset Channel="3" GainRef="-1" Gain="0.0001" Offset="0"/>
+            <GainOffset Channel="4" GainRef="-1" Gain="50.1429" Offset="0"/>
+            <GainOffset Channel="5" GainRef="-1" Gain="0.0001" Offset="0"/>
+            <GainOffset Channel="6" GainRef="-1" Gain="192.429" Offset="0"/>
+            <GainOffset Channel="7" GainRef="-1" Gain="1" Offset="0"/>
+            <AxisCoupled>1</AxisCoupled>
+            <CursorCoupled>1</CursorCoupled>
+            <CursorVACoupled>1</CursorVACoupled>
+            <CursorVBCoupled>1</CursorVBCoupled>
+            <CursorHACoupled>1</CursorHACoupled>
+            <CursorHBCoupled>1</CursorHBCoupled>
+            <CursorsLocked>0</CursorsLocked>
+            <BGColor>#f9fff9</BGColor>
+            <GridColor>#464646</GridColor>
+            <GridX>5</GridX>
+            <GridY>7</GridY>
+            <geometry x="0" y="600" width="2146" height="300"/>
+            <EnabledCurves>00000110</EnabledCurves>
+        </Panel>
+        <Panel>
+            <name>Counter</name>
+            <DispMode>0</DispMode>
+            <X_Y_X></X_Y_X>
+            <X_Y_Y></X_Y_Y>
+            <ScaleHorz>22</ScaleHorz>
+            <PosHorz>0</PosHorz>
+            <GainOffset Channel="0" GainRef="-1" Gain="1935.14" Offset="0"/>
+            <GainOffset Channel="1" GainRef="-1" Gain="1958.14" Offset="0"/>
+            <GainOffset Channel="2" GainRef="-1" Gain="1935.14" Offset="0"/>
+            <GainOffset Channel="3" GainRef="-1" Gain="0.0001" Offset="0"/>
+            <GainOffset Channel="4" GainRef="-1" Gain="50.1429" Offset="0"/>
+            <GainOffset Channel="5" GainRef="-1" Gain="0.0001" Offset="0"/>
+            <GainOffset Channel="6" GainRef="-1" Gain="192.429" Offset="0"/>
+            <GainOffset Channel="7" GainRef="-1" Gain="2010.71" Offset="0"/>
+            <AxisCoupled>1</AxisCoupled>
+            <CursorCoupled>1</CursorCoupled>
+            <CursorVACoupled>1</CursorVACoupled>
+            <CursorVBCoupled>1</CursorVBCoupled>
+            <CursorHACoupled>1</CursorHACoupled>
+            <CursorHBCoupled>1</CursorHBCoupled>
+            <CursorsLocked>0</CursorsLocked>
+            <BGColor>#f9fff9</BGColor>
+            <GridColor>#464646</GridColor>
+            <GridX>5</GridX>
+            <GridY>7</GridY>
+            <geometry x="0" y="900" width="2146" height="300"/>
+            <EnabledCurves>00000001</EnabledCurves>
+        </Panel>
+    </Panels>
+    <Trigger>
+        <SelectedTrigger>0</SelectedTrigger>
+        <General TriggerSource="0" HorzPos="0" Holdoff="0"/>
+        <IPC ClkDiv="1" NumBlk="127" ClkSrc="0" ClkDivSample="1" Timeout="0" SampleEvent="00000000" StreamEvent="00000000">
+            <Events>
+                <Event Nr="0" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="1" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="2" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="3" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="4" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="5" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="6" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+                <Event Nr="7" Function="0" SignalX="" SignalY="" Threshold="0" Enabled="0" Show="0" Name=""/>
+            </Events>
+        </IPC>
+        <Edge EdgeSubtype="-361848688" EdgeLevel="501"/>
+        <Pulse PulseCondition="-729434005" PulseLowerLimit="32762" PulseUpperLimit="983297"/>
+        <Slope SlopeCondition="0" SlopeLowerLimit="0" SlopeUpperLimit="0" SlopeLowerLevel="257" SlopeUpperLevel="0"/>
+        <Pattern PatternHLXPN0="-362471936" PatternHLXPN1="501" PatternHLXPN2="-361917776" PatternHLXPN3="501" PatternHLXPN4="16842752" PatternHLXPN5="501" PatternHLXPN6="129" PatternHLXPN7="1" PatternHLXPN8="-362474432" PatternHLXPN9="501" PatternHLXPN10="257" PatternHLXPN11="0" PatternHLXPN12="0" PatternHLXPN13="0" PatternHLXPN14="-362478932" PatternHLXPN15="501" PatternHLXPN16="-729434005" PatternHLXPN17="32762" PatternHLXPN18="1441816" PatternHLXPN19="0" PatternHLXPN20="-729434005" PatternHLXPN21="32762" PatternHLXPN22="3997842" PatternHLXPN23="0" PatternHLXPN24="-361917792" PatternHLXPN25="501" PatternHLXPN26="-361930160" PatternHLXPN27="501" PatternHLXPN28="-2033195735" PatternHLXPN29="120" PatternHLXPN30="0" PatternHLXPN31="0"/>
+        <Duration DurationHLX0="-362474240" DurationCondition0="257" DurationLowerLimit0="-362479616" DurationUpperLimit0="983040" DurationHLX1="501" DurationCondition1="120" DurationLowerLimit1="501" DurationUpperLimit1="0" DurationHLX2="-362125016" DurationCondition2="3" DurationLowerLimit2="-362478932" DurationUpperLimit2="-361908368" DurationHLX3="501" DurationCondition3="0" DurationLowerLimit3="501" DurationUpperLimit3="501" DurationHLX4="257" DurationCondition4="257" DurationLowerLimit4="257" DurationUpperLimit4="16861105" DurationHLX5="0" DurationCondition5="32762" DurationLowerLimit5="0" DurationUpperLimit5="32762" DurationHLX6="-362478920" DurationCondition6="-362479616" DurationLowerLimit6="-361907344" DurationUpperLimit6="129" DurationHLX7="501" DurationCondition7="501" DurationLowerLimit7="501" DurationUpperLimit7="1" DurationHLX8="-362479616" DurationCondition8="0" DurationLowerLimit8="-729455471" DurationUpperLimit8="-362151936" DurationHLX9="501" DurationCondition9="0" DurationLowerLimit9="32762" DurationUpperLimit9="501" DurationHLX10="-362478932" DurationCondition10="550" DurationLowerLimit10="-362151936" DurationUpperLimit10="192" DurationHLX11="501" DurationCondition11="0" DurationLowerLimit11="501" DurationUpperLimit11="0" DurationHLX12="-362476352" DurationCondition12="-361917792" DurationLowerLimit12="0" DurationUpperLimit12="0" DurationHLX13="501" DurationCondition13="501" DurationLowerLimit13="0" DurationUpperLimit13="0" DurationHLX14="48" DurationCondition14="-361917776" DurationLowerLimit14="-361908384" DurationUpperLimit14="0" DurationHLX15="0" DurationCondition15="501" DurationLowerLimit15="501" DurationUpperLimit15="0" DurationHLX16="257" DurationCondition16="0" DurationLowerLimit16="127" DurationUpperLimit16="1832255488" DurationHLX17="0" DurationCondition17="0" DurationLowerLimit17="0" DurationUpperLimit17="32762" DurationHLX18="0" DurationCondition18="0" DurationLowerLimit18="127" DurationUpperLimit18="-362151936" DurationHLX19="0" DurationCondition19="0" DurationLowerLimit19="0" DurationUpperLimit19="501" DurationHLX20="1073807425" DurationCondition20="-729457759" DurationLowerLimit20="127" DurationUpperLimit20="-729594705" DurationHLX21="0" DurationCondition21="32762" DurationLowerLimit21="0" DurationUpperLimit21="32762" DurationHLX22="0" DurationCondition22="-362151936" DurationLowerLimit22="-2033195040" DurationUpperLimit22="-361917776" DurationHLX23="0" DurationCondition23="501" DurationLowerLimit23="120" DurationUpperLimit23="501" DurationHLX24="514" DurationCondition24="-362151936" DurationLowerLimit24="-2033195056" DurationUpperLimit24="-361908384" DurationHLX25="0" DurationCondition25="501" DurationLowerLimit25="120" DurationUpperLimit25="501" DurationHLX26="32" DurationCondition26="0" DurationLowerLimit26="257" DurationUpperLimit26="-362075480" DurationHLX27="0" DurationCondition27="0" DurationLowerLimit27="0" DurationUpperLimit27="501" DurationHLX28="33554434" DurationCondition28="-362151936" DurationLowerLimit28="4096" DurationUpperLimit28="1831177232" DurationHLX29="0" DurationCondition29="501" DurationLowerLimit29="0" DurationUpperLimit29="32762" DurationHLX30="-362151936" DurationCondition30="48" DurationLowerLimit30="192" DurationUpperLimit30="127" DurationHLX31="501" DurationCondition31="0" DurationLowerLimit31="0" DurationUpperLimit31="0"/>
+        <SetupHold SetupHoldDataChannel="-729467510" SetupHoldClockChannel="32762" SetupHoldEdgeType="-362125016" SetupHoldDatatype="501" SetupHoldSetupType="192" SetupHoldSetupTime="0" SetupHoldHoldTime="-362479280"/>
+        <Timeout TimeoutEdgeType="501" TimeoutTimeout="-729467510"/>
+        <Runt RuntPolarity="32762" RuntCondition="-361917776" RuntUpperLevel="0" RuntLowerLevel="-729457759"/>
+        <Window WindowWindowType="32762" WindowTriggerPos="-362479280" WindowHoldTime="501"/>
+        <Delay DelayDelayTime="192" DelayChannelA="0" DelayChannelB="-361849744" DelayEdgeTypeA="501" DelayEdgeTypeB="2130706559" DelayLowerLimit="32762" DelayUpperLimit="0"/>
+    </Trigger>
+</oszixml>

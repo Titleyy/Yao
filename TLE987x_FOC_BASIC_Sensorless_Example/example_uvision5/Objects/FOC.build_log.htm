@@ -1,0 +1,294 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.33.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 ManZuo, HP Inc., LIC=PE7DL-0W12D-WF8I7-ELU4K-AKNDD-Z3BKR
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.33.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.15
+Assembler:       Armasm.exe V6.15
+Linker/Locator:  ArmLink.exe V6.15
+Library Manager: ArmAr.exe V6.15
+Hex Converter:   FromElf.exe V6.15
+CPU DLL:         SARMCM3.DLL V5.33.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      Segger\JL2CM3.dll V2.99.38.0
+Dialog DLL:      TCM.DLL V1.48.0.0
+ 
+<h2>Project:</h2>
+C:\Users\ManZuo\Desktop\TLE987x_FOC_BASIC_Sensorless_Example\example_uvision5\FOC.uvprojx
+Project File Date:  09/22/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.15', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+compiling ident.c...
+compiling Ifx_MAS_Modulator_F16_Cfg.c...
+compiling Ifx_MDA_FluxEstimator_F16_Cfg.c...
+compiling Ifx_MDA_VToFController_F16_Cfg.c...
+compiling Ifx_MDA_IToFController_F16_Cfg.c...
+compiling ComApp.c...
+compiling Ifx_MDA_FocController_F16_Cfg.c...
+compiling MctrlExample.c...
+Cfg/Ifx_MS_FocSolution_F16_Cfg.c(48): warning: implicit conversion from 'int' to 'Ifx_Math_Fract16' (aka 'short') changes value from 53658 to -11878 [-Wconstant-conversion]
+        .inverseTorqueConstant             = 53658,  /**< inverseTorqueConstant_DU */
+                                             ^~~~~
+1 warning generated.
+compiling Ifx_MS_FocSolution_F16_Cfg.c...
+compiling main.c...
+compiling SignalList.c...
+compiling MctrlExample_Cfg.c...
+compiling Ifx_FRW_ParamTable_Cfg.c...
+compiling Ifx_FRW_ParamTable.c...
+compiling Ifx_MAS_Modulator_F16_tableSin60Sqrt3.c...
+compiling Ifx_Common.c...
+compiling Ifx_MAS_Modulator_F16.c...
+compiling Ifx_Math_AccelLimit_F16.c...
+compiling Ifx_Math_AdvancedMath_F16.c...
+compiling Ifx_Math_Atan2.c...
+compiling Ifx_Math_Arithmetic_F16.c...
+compiling Ifx_Math_CartToPolar.c...
+compiling Ifx_Math_Clarke.c...
+compiling Ifx_Math_Interp1DLut.c...
+compiling Ifx_Math_CurrentReconstruction.c...
+compiling Ifx_Math_InvClarke.c...
+compiling Ifx_Math_InvPark.c...
+compiling Ifx_Math_LowPass1st_F16.c...
+compiling Ifx_Math_Lut_Atan_F16_Table.c...
+compiling Ifx_Math_Lut_CartToPolar_F16_Table.c...
+compiling Ifx_Math_Lut_DivShL_F32_Table.c...
+compiling Ifx_Math_Lut_SinCos_F16_Table.c...
+compiling Ifx_Math_MotorControl_F16.c...
+compiling Ifx_Math_Park.c...
+compiling Ifx_Math_Pi_F16.c...
+compiling Ifx_Math_PLL_F16.c...
+compiling Ifx_Math_PolarToCart.c...
+compiling Ifx_Math_SpeedPreControl_F16.c...
+compiling Ifx_Math_RateLimit_F16.c...
+compiling Ifx_Math_Trigonometric_F16.c...
+compiling Ifx_MDA_FluxEstimator_F16.c...
+compiling Ifx_MDA_IToFController_F16.c...
+compiling Ifx_MDA_StartAngleIdent_F16.c...
+compiling Ifx_MDA_FocController_F16.c...
+compiling Ifx_MDA_VToFController_F16.c...
+compiling Ifx_MHA_BridgeDrv_F16_TLE987.c...
+compiling Ifx_MHA_MeasurementADC_F16_TLE987.c...
+compiling Ifx_MHA_PatternGen_F16_TLE987.c...
+compiling Ifx_MHA_DriverGroup_F16.c...
+compiling Ifx_CHA_DTI_TLE987.c...
+compiling arbiter.c...
+compiling Ifx_FHA_TbStreaming_TLE987.c...
+compiling linklayer.c...
+compiling messageHandler.c...
+compiling Ifx_MS_FocSolution_F16.c...
+compiling eventService.c...
+compiling parameterService.c...
+compiling sdoService.c...
+compiling router.c...
+compiling streamingService.c...
+compiling samplingService.c...
+compiling targetInterface.c...
+compiling traceHandler.c...
+compiling adc2.c...
+compiling adc1.c...
+compiling bootrom.c...
+compiling ccu6.c...
+compiling bdrv.c...
+compiling csa.c...
+compiling dma.c...
+compiling int.c...
+compiling gpt12e.c...
+compiling lin.c...
+compiling isr.c...
+compiling pmu.c...
+compiling mon.c...
+compiling port.c...
+assembling startup_tle987x.S...
+compiling scu.c...
+compiling ssc.c...
+compiling system_tle987x.c...
+compiling timer2x.c...
+compiling timer3.c...
+compiling wdt1.c...
+compiling uart.c...
+compiling tle_device.c...
+linking...
+Program Size: Code=24148 RO-data=18544 RW-data=372 ZI-data=2940  
+".\Objects\FOC.axf" - 0 Error(s), 1 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.6.0.pack
+                ARM.CMSIS.5.6.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.3.0
+   * Component: DSP Variant: Library Version: 1.7.0
+
+Package Vendor: Infineon
+                https://itools.infineon.com/cmsis_packs/TLE987x/Infineon.TLE987x_DFP.1.6.0.pack
+                Infineon.TLE987x_DFP.1.6.0
+                Infineon TLE987x Series Device Support
+   * Component: BF-Stepping Version: 0.0.1
+   * Component: ConfigWizard_v2 Version: 2.1.12
+   * Component: ADC1 Version: 0.3.0
+   * Component: ADC2 Version: 0.2.6
+   * Component: BDRV Version: 0.6.1
+   * Component: BOOTROM Version: 0.3.3
+   * Component: CCU6 Version: 0.4.1
+   * Component: CSA Version: 0.1.9
+   * Component: DMA Version: 0.2.2
+   * Component: GPT12E Version: 0.2.2
+   * Component: INT Version: 0.2.3
+   * Component: ISR Version: 0.2.9
+   * Component: LIN Version: 0.2.0
+   * Component: MON Version: 0.1.7
+   * Component: PMU Version: 0.2.2
+   * Component: PORT Version: 0.6.0
+   * Component: SCU Version: 0.5.7
+   * Component: SSC Version: 0.1.8
+   * Component: TIMER2x Version: 0.2.3
+   * Component: TIMER3 Version: 0.2.0
+   * Component: UART Version: 0.2.4
+   * Component: WDT1 Version: 0.3.3
+   * Component: Startup Version: 1.2.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\Device\TLE9879QXA40
+  .\RTE\_Target_1
+  C:\Users\ManZuo\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  C:\Users\ManZuo\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\DSP\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.3.0
+
+   * Component: ARM::CMSIS:DSP:Library:1.7.0
+      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM3l_math.lib
+      Include file:  CMSIS\DSP\Include\arm_math.h
+
+   * Component: Infineon::Device:BF-Stepping:0.0.1
+
+   * Component: Infineon::Device:ConfigWizard_v2:2.1.12
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\lin_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\ccu6_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\timer2x_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\ssc_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\isr_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\bdrv_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\dma_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\adc2_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\uart_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\int_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\gpt12e_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\csa_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\mon_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\scu_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\pmu_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\bsl_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\port_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\timer3_defines.h
+      Include file:  Device\SDK\cfgwiz\TLE987x_40\v2\adc1_defines.h
+
+   * Component: Infineon::Device:SDK:ADC1:0.3.0
+      Include file:  Device\SDK\inc\adc1.h
+      Source file:   Device\SDK\src\adc1.c
+
+   * Component: Infineon::Device:SDK:ADC2:0.2.6
+      Include file:  Device\SDK\inc\adc2.h
+      Source file:   Device\SDK\src\adc2.c
+
+   * Component: Infineon::Device:SDK:BDRV:0.6.1
+      Source file:   Device\SDK\src\bdrv.c
+      Include file:  Device\SDK\inc\bdrv.h
+
+   * Component: Infineon::Device:SDK:BOOTROM:0.3.3
+      Include file:  Device\SDK\inc\bootrom.h
+      Source file:   Device\SDK\src\bootrom.c
+
+   * Component: Infineon::Device:SDK:CCU6:0.4.1
+      Include file:  Device\SDK\inc\ccu6.h
+      Source file:   Device\SDK\src\ccu6.c
+
+   * Component: Infineon::Device:SDK:CSA:0.1.9
+      Source file:   Device\SDK\src\csa.c
+      Include file:  Device\SDK\inc\csa.h
+
+   * Component: Infineon::Device:SDK:DMA:0.2.2
+      Source file:   Device\SDK\src\dma.c
+      Include file:  Device\SDK\inc\dma.h
+
+   * Component: Infineon::Device:SDK:GPT12E:0.2.2
+      Include file:  Device\SDK\inc\gpt12e.h
+      Source file:   Device\SDK\src\gpt12e.c
+
+   * Component: Infineon::Device:SDK:INT:0.2.3
+      Source file:   Device\SDK\src\int.c
+      Include file:  Device\SDK\inc\int.h
+
+   * Component: Infineon::Device:SDK:ISR:0.2.9
+      Include file:  Device\SDK\inc\isr.h
+      Source file:   Device\SDK\src\isr.c
+
+   * Component: Infineon::Device:SDK:LIN:0.2.0
+      Source file:   Device\SDK\src\lin.c
+      Include file:  Device\SDK\inc\lin.h
+
+   * Component: Infineon::Device:SDK:MON:0.1.7
+      Include file:  Device\SDK\inc\mon.h
+      Source file:   Device\SDK\src\mon.c
+
+   * Component: Infineon::Device:SDK:PMU:0.2.2
+      Source file:   Device\SDK\src\pmu.c
+      Include file:  Device\SDK\inc\pmu.h
+
+   * Component: Infineon::Device:SDK:PORT:0.6.0
+      Include file:  Device\SDK\inc\port.h
+      Source file:   Device\SDK\src\port.c
+
+   * Component: Infineon::Device:SDK:SCU:0.5.7
+      Include file:  Device\SDK\inc\scu.h
+      Source file:   Device\SDK\src\scu.c
+
+   * Component: Infineon::Device:SDK:SSC:0.1.8
+      Include file:  Device\SDK\inc\ssc.h
+      Source file:   Device\SDK\src\ssc.c
+
+   * Component: Infineon::Device:SDK:TIMER2x:0.2.3
+      Source file:   Device\SDK\src\timer2x.c
+      Include file:  Device\SDK\inc\timer2x.h
+
+   * Component: Infineon::Device:SDK:TIMER3:0.2.0
+      Include file:  Device\SDK\inc\timer3.h
+      Source file:   Device\SDK\src\timer3.c
+
+   * Component: Infineon::Device:SDK:UART:0.2.4
+      Source file:   Device\SDK\src\uart.c
+      Include file:  Device\SDK\inc\uart.h
+
+   * Component: Infineon::Device:SDK:WDT1:0.3.3
+      Source file:   Device\SDK\src\wdt1.c
+      Include file:  Device\SDK\inc\wdt1.h
+
+   * Component: Infineon::Device:Startup:1.2.0
+      Include file:  Device\Include\tle_variants.h
+      Source file:   Device\Include\sfr_access.h
+      Include file:  Device\Include\cmsis_misra.h
+      Source file:   Device\Source\ARM\startup_tle987x.S
+      Source file:   Device\Source\tle_device.c
+      Source file:   Device\Source\system_tle987x.c
+      Include file:  Device\Include\tle_device.h
+      Include file:  Device\Include\types.h
+      Include file:  Device\Include\eval_board.h
+      Include file:  Device\Include\tle987x.h
+      Include file:  Device\Include\system_tle987x.h
+      Source file:   Device\SDK\app\main.c
+Build Time Elapsed:  00:00:06
+</pre>
+</body>
+</html>

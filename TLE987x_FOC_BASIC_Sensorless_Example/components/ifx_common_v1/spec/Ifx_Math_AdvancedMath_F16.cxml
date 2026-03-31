@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="AdvancedMath_F16" displayName="AdvancedMath" library="Ifx_Math" includes="" multiInstance="true" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="piDisc" symbolName="CFG_PI_DISC" dynamicConfig="false" staticConfig="true" displayName="PI controllers discretization method" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>PI controllers discretization method</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="Trapezoidal" value="0"/>
+      <enumEntry name="Backward_Euler" value="1"/>
+      <enumEntry name="Forward_Euler" value="2"/>
+   </param>
+   <param name="piAntiWind" symbolName="CFG_PI_ANTI_WIND" dynamicConfig="false" staticConfig="true" displayName="PI controllers anti-windup method" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>PI controllers anti-windup method</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="No_Antiwindup" value="0"/>
+      <enumEntry name="Clamp" value="1"/>
+      <enumEntry name="Back_Calculation" value="2"/>
+   </param>
+   <param name="pllDelayLength" symbolName="CFG_PLL_DELAY_LENGTH" dynamicConfig="false" staticConfig="true" displayName="PLL delay length" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>PLL delay length</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>8</defaultDU>
+      <defaultPU>8</defaultPU>
+      <enumEntry name="two_cycles" value="2"/>
+      <enumEntry name="four_cycles" value="4"/>
+      <enumEntry name="eight_cycles" value="8"/>
+      <enumEntry name="sixteen_cycles" value="16"/>
+      <enumEntry name="thirtytwo_cycles" value="32"/>
+   </param>
+</component>

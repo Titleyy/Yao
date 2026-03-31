@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.0">
+    <checksum>fbe9761a0efb6d55a98ed833adfd9b897c8ff333704c51426009851df0b52ef9</checksum>
+    <version label="V1.0.0"></version>
+    <treecontainer label="Trigonometric" headerlabels="Structure;Settings;" columnwidths="450;150">
+        <header file="Ifx_Math_Trigonometric_F16_Cfg.h" fullname="1"/>
+        
+        <combo label="Sine table size" define="IFX_MATH_TRIGONOMETRIC_F16_CFG_SIN_LUT_SIZE" header="Ifx_Math_Trigonometric_F16_Cfg.h" default="label=10 bits">
+            <item label="8 bits" value="8" />
+            <item label="10 bits" value="10" />
+            <item label="12 bits" value="12" />
+        </combo>
+        
+        <combo label="Atan table size" define="IFX_MATH_TRIGONOMETRIC_F16_CFG_ATAN_LUT_SIZE" header="Ifx_Math_Trigonometric_F16_Cfg.h" default="label=10 bits">
+            <item label="8 bits" value="8" />
+            <item label="10 bits" value="10" />
+            <item label="12 bits" value="12" />
+        </combo>
+    </treecontainer>
+</ifxmlcfg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.0">
+    <checksum>36260feb206071c3c6c91232166addb7d370da214f644fb7024860cd6b81070b</checksum>
+    <version label="V1.0.0"></version>
+    <header file="Ifx_Math_MotorControlMath_F16_Cfg.h" fullname="1"/>
+    <treecontainer label="Motor Control Math" headerlabels="Structure;Settings;" columnwidths="450;150">
+        <combo label="Cartesian to Polar table size" define="IFX_MATH_MOTORCONTROLMATH_F16_CFG_CARTTOPOLAR_LUT_SIZE" header="Ifx_Math_MotorControlMath_F16_Cfg.h" default="label=10 bits">
+            <item label="8 bits" value="8" />
+            <item label="10 bits" value="10" />
+            <item label="12 bits" value="12" />
+        </combo>
+    </treecontainer>
+</ifxmlcfg>

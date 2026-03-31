@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="IToFController_F16" displayName="IToFController" library="Ifx_MDA" multiInstance="true" includes="" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="angleIncrement" symbolName="angleIncrementQ14" displayName="Angle increment" index="0x4301" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="paramInStruct">
+      <description/>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>655</defaultDU>
+      <defaultPU>655</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-32767</minPU>
+      <maxPU>32767</maxPU>
+   </param>
+   <param name="samplingTime" symbolName="CFG_SAMPLING_TIME_US" displayName="Sampling time" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="none">
+      <description>Sampling time</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>150</defaultDU>
+      <defaultPU>150</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>1</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="baseElecSpeed" symbolName="CFG_BASE_ELEC_SPEED_RADPS" displayName="Base electrical speed" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="rad/s" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="configDefine">
+      <description>Base electrical speed for Q15 normalization of electrical speed related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1675</defaultDU>
+      <defaultPU>1675</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="currentVecAngle" symbolName="p_output.currentVecAngle_rad" displayName="Current vector angle" index="0x4312" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="rad" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>Angle of the output current vector. 0xFFFFFFFF = 2*pi = 360degree</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>4294967295</maxDU>
+      <minPU>0</minPU>
+      <maxPU>6.2832</maxPU>
+   </param>
+</component>

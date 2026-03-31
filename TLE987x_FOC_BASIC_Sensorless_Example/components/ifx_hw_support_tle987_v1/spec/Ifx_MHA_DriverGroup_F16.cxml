@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="DriverGroup_F16" displayName="DriverGroup" library="Ifx_MHA" multiInstance="true" includes="" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="baseVoltage" symbolName="CFG_BASE_VOLTAGE_V" displayName="Base voltage" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="V" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base voltage for Q15 normalization of voltage related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>24000</defaultDU>
+      <defaultPU>24</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.MeasurementADC_F16_TLE987.baseVoltage</refId>
+      </setAndHide>
+   </param>
+   <param name="baseCurrent" symbolName="CFG_BASE_CURRENT_A" displayName="Base current" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="A" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base current for Q15 normalization of current related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>5000</defaultDU>
+      <defaultPU>5</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.MeasurementADC_F16_TLE987.baseCurrent</refId>
+      </setAndHide>
+   </param>
+   <param name="frequency" symbolName="CFG_FREQUENCY_KHZ" displayName="PWM frequency" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="kHz" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>PWM frequency in kHz</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20</defaultDU>
+      <defaultPU>20</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>100</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.PatternGen_F16_TLE987.frequency</refId>
+      </setAndHide>
+   </param>
+   <param name="currentLoopFactor" symbolName="CFG_CURRENT_LOOP_FACTOR" displayName="Current loop factor" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" physicalUnit="counts" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>This defines the current loop factor in counts of multiples of the PWM-cycle to define the cyclic call of current control loop.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>3</defaultDU>
+      <defaultPU>3</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>20</maxDU>
+      <minPU>1</minPU>
+      <maxPU>20</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.PatternGen_F16_TLE987.currentLoopFactor</refId>
+      </setAndHide>
+   </param>
+   <param name="speedLoopPeriod" symbolName="CFG_SPEED_LOOP_PERIOD_US" displayName="Execution period" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Time in which the component is executed. This is the speed loop period / mid timebase.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1500</defaultDU>
+      <defaultPU>1500</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.BridgeDrv_F16_TLE987.executionPeriod</refId>
+      </setAndHide>
+   </param>
+   <param name="deadTime" symbolName="CFG_DEADTIME" displayName="Dead time" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.05" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="none">
+      <description>This configures the value of the HighSide-LowSide switching Dead time.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>500</defaultDU>
+      <defaultPU>0.5</defaultPU>
+      <minDU>50</minDU>
+      <maxDU>2000</maxDU>
+      <minPU>0.05</minPU>
+      <maxPU>2.0</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.PatternGen_F16_TLE987.deadTime</refId>
+      </setAndHide>
+   </param>
+</component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="TbStreaming_TLE987" displayName="TbStreaming" library="Ifx_FHA" multiInstance="true" includes="" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="txPointers" symbolName="Ifx_FHA_TbStreaming_g_txPointers" displayName="Tx pointers" index="0x3400" dynamicConfig="true" staticConfig="true" subIndexCount="24" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="uint32_t" decimalPlaces="0" step="1" accessMode="readWrite" generatePattern="globalVariable">
+      <description>Array of pointers that can be changed to send selected SPI data.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>4294967295</maxDU>
+      <minPU>0</minPU>
+      <maxPU>4294967295</maxPU>
+   </param>
+</component>

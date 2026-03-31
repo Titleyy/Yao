@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.0">
+    <checksum>281374e330e5b24a5859f234534330acd7512cbb5ab0e882ff32a986f9968722</checksum>
+    <version label="V1.0.0"></version>
+    <treecontainer label="Advanced Math" headerlabels="Structure;Settings;" columnwidths="450;150">
+        <header file="Ifx_Math_AdvancedMath_F16_Cfg.h" fullname="1"/>
+        
+		<combo label="PI controllers discretization method" define="IFX_MATH_ADVANCEDMATH_F16_CFG_PI_DISC" header="Ifx_Math_AdvancedMath_F16_Cfg.h" svd="0" default="label=Trapezoidal">
+            <item label="Trapezoidal" value="0" />
+            <item label="Backward Euler" value="1" />
+            <item label="Forward Euler" value="2" />
+        </combo>
+                
+        <combo label="PI controllers anti-windup method" define="IFX_MATH_ADVANCEDMATH_F16_CFG_PI_ANTI_WIND" header="Ifx_Math_AdvancedMath_F16_Cfg.h" svd="0" default="label=Clamp">
+            <item label="None" value="0" />
+            <item label="Clamp" value="1" />
+            <item label="Back Calculation" value="2" />
+        </combo>
+		
+        <combo label="PLL delay length" define="IFX_MATH_ADVANCEDMATH_F16_CFG_PLL_DELAY_LENGTH" header="Ifx_Math_AdvancedMath_F16_Cfg.h" svd="0" default="label=32 cycles">
+            <item label="2 cycles" value="2" />
+            <item label="4 cycles" value="4" />
+            <item label="8 cycles" value="8" />
+            <item label="16 cycles" value="16" />
+            <item label="32 cycles" value="32" />
+        </combo>
+    </treecontainer>
+</ifxmlcfg>

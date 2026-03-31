@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.0">
+    <checksum>f87a79427f4da7fb411de13c5621486c84923f8d4fcf170a8a7e7c8aabf32b3a</checksum>
+    <version label="V1.1.0"/>
+    
+    <groupcontainer label="DriverGroup" desc="DriverGroup Parameters">
+    
+        <treecontainer headerlabels="Structure;Settings;">
+        
+            <checkbox label="Use module" define="IFX_MHA_DRIVERGROUP_F16_CFG.ENABLE" svd="0" expand="1" default="1" uielement="branch" lockon="IFX_MHA_MEASUREMENTADC_F16_TLE987_CFG.ENABLE=1;IFX_MHA_PATTERNGEN_F16_TLE987_CFG.ENABLE=1;IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.ENABLE=1;IFX_MHA_MEASUREMENTADC_F16_TLE987_CFG.BASE_VOLTAGE_V=IFX_MHA_DRIVERGROUP_F16_CFG.BASE_VOLTAGE_V;IFX_MHA_MEASUREMENTADC_F16_TLE987_CFG.BASE_CURRENT_A=IFX_MHA_DRIVERGROUP_F16_CFG.BASE_CURRENT_A;IFX_MHA_PATTERNGEN_F16_TLE987_CFG.FREQUENCY_KHZ=IFX_MHA_DRIVERGROUP_F16_CFG.PWM_FREQUENCY_KHZ;IFX_MHA_PATTERNGEN_F16_TLE987_CFG.CURRENT_LOOP_FACTOR=IFX_MHA_DRIVERGROUP_F16_CFG.CURRENT_LOOP_FACTOR;IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.EXECUTION_PERIOD_US=IFX_MHA_DRIVERGROUP_F16_CFG.SPEED_LOOP_PERIOD_US;GPT12E.T6CON.T6SR=1;GPT12E.TEMP_CAPREL_SEL=1;GPT12E.CAPREL_TIME=IFX_MHA_DRIVERGROUP_F16_CFG.SPEED_LOOP_PERIOD_US;GPT12E.T6_INT_EN=1;SCU.GPT12IEN.T6IE=1;CCU6.T12_OM_INT_EN=1;CCU6.IEN.ENT12OM=1;CCU6.T12_PM_INT_EN=1;CCU6.IEN.ENT12PM=1;">
+                
+                <!-- Set/lock default values of underlying components (downwards) -->
+                
+                <combo label="Call back speed loop" define="IFX_MHA_DRIVERGROUP_F16_CFG.CALLBACK_SPEEDLOOP" default="1" svd="0">
+                    <item label="Default (Ifx_FOC_speedLoop_callback)" value="1" lockon="GPT2.T6_CALLBACK=Ifx_FOC_speedLoop_callback" />
+                    <item label="Custom (Configure in GPT12E)" value="2" />
+                </combo>
+                
+                <combo label="Call back one match" define="IFX_MHA_DRIVERGROUP_F16_CFG.CALLBACK_ONEMATCH" default="1" svd="0">
+                    <item label="Default (Ifx_FOC_oneMatchCallback)" value="1" lockon="CCU6.T12_OM_CALLBACK=Ifx_FOC_oneMatchCallback" />
+                    <item label="Custom (Configure in CCU6)" value="2" />
+                </combo>
+                
+                <combo label="Call back period match" define="IFX_MHA_DRIVERGROUP_F16_CFG.CALLBACK_PERIODMATCH" default="1" svd="0">
+                    <item label="Default (Ifx_FOC_periodMatchCallback)" value="1" lockon="CCU6.T12_PM_CALLBACK=Ifx_FOC_periodMatchCallback" />
+                    <item label="Custom (Configure in CCU6)" value="2" />
+                </combo>
+                
+                <!-- Set values of underlying components (downwards), these configurations are expected to be set/locked by the upper/integrating component -->
+                
+                <doublespinbox label="Base voltage" suffix=" V" define="IFX_MHA_DRIVERGROUP_F16_CFG.BASE_VOLTAGE_V" default="24.00000">
+                    <action event="changed" cmd="setDef" data="IFX_MHA_MEASUREMENTADC_F16_TLE987_CFG.BASE_VOLTAGE_V=IFX_MHA_DRIVERGROUP_F16_CFG.BASE_VOLTAGE_V" />
+                </doublespinbox>
+                
+                <doublespinbox label="Base current" suffix=" A" define="IFX_MHA_DRIVERGROUP_F16_CFG.BASE_CURRENT_A" default="5.00000">
+                    <action event="changed" cmd="setDef" data="IFX_MHA_MEASUREMENTADC_F16_TLE987_CFG.BASE_CURRENT_A=IFX_MHA_DRIVERGROUP_F16_CFG.BASE_CURRENT_A" />
+                </doublespinbox>
+            
+                <spinbox label="PWM frequency" suffix=" kHz" define="IFX_MHA_DRIVERGROUP_F16_CFG.PWM_FREQUENCY_KHZ" default="20">
+                    <action event="changed" cmd="setDef" data="IFX_MHA_PATTERNGEN_F16_TLE987_CFG.FREQUENCY_KHZ=IFX_MHA_DRIVERGROUP_F16_CFG.PWM_FREQUENCY_KHZ" />
+                </spinbox>
+                
+                <spinbox label="Current loop factor" define="IFX_MHA_DRIVERGROUP_F16_CFG.CURRENT_LOOP_FACTOR" default="3" header="Ifx_MHA_DriverGroup_F16_Cfg.h">
+                    <action event="changed" cmd="setDef" data="IFX_MHA_PATTERNGEN_F16_TLE987_CFG.CURRENT_LOOP_FACTOR=IFX_MHA_DRIVERGROUP_F16_CFG.CURRENT_LOOP_FACTOR" />
+                </spinbox>
+                
+                <spinbox label="Speed loop period" suffix=" us" define="IFX_MHA_DRIVERGROUP_F16_CFG.SPEED_LOOP_PERIOD_US" default="1500" header="Ifx_MHA_DriverGroup_F16_Cfg.h">
+                    <action event="changed" cmd="setDef" data="GPT12E.CAPREL_TIME=IFX_MHA_DRIVERGROUP_F16_CFG.SPEED_LOOP_PERIOD_US" />
+                    <action event="changed" cmd="setDef" data="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.EXECUTION_PERIOD_US=IFX_MHA_DRIVERGROUP_F16_CFG.SPEED_LOOP_PERIOD_US" />
+                </spinbox>
+
+                <!-- Read and provide values from underlying components to the upper/integrating component (upwards) -->
+                
+                <math label="PWM clock frequency" unit=" MHz" define="IFX_MHA_DRIVERGROUP_F16_CFG.PWM_CLOCK_FREQ_MHZ" formula="CCU6.T12_CLK" />
+                <math label="Dead time" unit=" ns" define="IFX_MHA_DRIVERGROUP_F16_CFG.DEADTIME_NS" formula="IFX_MHA_PATTERNGEN_F16_TLE987_CFG.DEADTIME" />
+                
+            </checkbox>
+            
+        </treecontainer>
+        
+    </groupcontainer>
+    
+</ifxmlcfg>

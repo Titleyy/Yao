@@ -1,0 +1,311 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="Modulator_F16" displayName="Modulator" library="Ifx_MAS" multiInstance="true" includes="" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="measurementTime" symbolName="measurementTime_tick" displayName="Current sense Measurement time" index="0x4000" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.05" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Configuration of Measurement time in us. 1 tick = 1 / f_sys = 1/40Mhz = 0.025us</description>
+      <targetEvent getValueDU="Ifx_MAS_Modulator_F16_getMeasurementTime_tick" setValueDU="Ifx_MAS_Modulator_F16_setMeasurementTime_tick"/>
+      <defaultDU>48</defaultDU>
+      <defaultPU>1.2</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>200</maxDU>
+      <minPU>0</minPU>
+      <maxPU>5.0</maxPU>
+   </param>
+   <param name="deadTime" symbolName="deadTime_tick" displayName="Dead time" index="0x4001" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.05" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>HighSide-LowSide switching Dead time in us. 1 tick = 1 / f_sys = 1/40Mhz = 0.025us</description>
+      <targetEvent getValueDU="Ifx_MAS_Modulator_F16_getDeadTime_tick" setValueDU="Ifx_MAS_Modulator_F16_setDeadTime_tick"/>
+      <defaultDU>20</defaultDU>
+      <defaultPU>0.50</defaultPU>
+      <minDU>2</minDU>
+      <maxDU>80</maxDU>
+      <minPU>0.05</minPU>
+      <maxPU>2.00</maxPU>
+   </param>
+   <param name="driverDelay" symbolName="driverDelay_tick" displayName="Timedelay of Powerstage Driver" index="0x4002" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.05" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Configuration of Timedelay of Powerstage Driver. 1 tick = 1 / f_sys = 1/40Mhz = 0.025us</description>
+      <targetEvent getValueDU="Ifx_MAS_Modulator_F16_getDriverDelay_tick" setValueDU="Ifx_MAS_Modulator_F16_setDriverDelay_tick"/>
+      <defaultDU>8</defaultDU>
+      <defaultPU>0.2</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>80</maxDU>
+      <minPU>0.0</minPU>
+      <maxPU>2.0</maxPU>
+   </param>
+   <param name="ringingTime" symbolName="ringingTime_tick" displayName="Current sense Ringing time" index="0x4003" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.05" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Configuration of Current sense Ringing time in ns. 1 tick = 1 / f_sys = 1/40Mhz = 25ns</description>
+      <targetEvent getValueDU="Ifx_MAS_Modulator_F16_getRingingTime_tick" setValueDU="Ifx_MAS_Modulator_F16_setRingingTime_tick"/>
+      <defaultDU>20</defaultDU>
+      <defaultPU>0.50</defaultPU>
+      <minDU>2</minDU>
+      <maxDU>80</maxDU>
+      <minPU>0.05</minPU>
+      <maxPU>2.0</maxPU>
+   </param>
+   <param name="period" symbolName="period_tick" displayName="Period of the switching frequency" index="0x4004" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" physicalUnit="ticks" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>Configuration of Period of the switching frequency</description>
+      <targetEvent getValueDU="Ifx_MAS_Modulator_F16_getPeriod_tick" setValueDU="Ifx_MAS_Modulator_F16_setPeriod_tick"/>
+      <defaultDU>2000</defaultDU>
+      <defaultPU>2000</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>4000</maxDU>
+      <minPU>1</minPU>
+      <maxPU>4000</maxPU>
+   </param>
+   <param name="measurementPoint" symbolName="measurementPoint" displayName="Current measurement point" index="0x4005" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>Current measurement point</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="measurementPointBeginning" value="0"/>
+      <enumEntry name="measurementPointEnd" value="1"/>
+   </param>
+   <param name="maxAmplitude" symbolName="maxAmplitudeQ15" displayName="Modulator max. output voltage" index="0x4006" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>This configures the max. output voltage of the modulator. Unit is in percent of baseVoltage</description>
+      <targetEvent getValueDU="Ifx_MAS_Modulator_F16_getMaxAmplitude" setValueDU="Ifx_MAS_Modulator_F16_setMaxAmplitude"/>
+      <defaultDU>13653</defaultDU>
+      <defaultPU>41.67</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="biDirectionalShiftingThresholdHigh" symbolName="biDirectionalShiftingThresholdHighQ15" displayName="Transition threshold high" index="0x4007" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>High transition from bidirectional two phase to bidirectional three phase shifting, should be greater or equal to the low transition value</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>3277</defaultDU>
+      <defaultPU>10</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="biDirectionalShiftingThresholdLow" symbolName="biDirectionalShiftingThresholdLowQ15" displayName="Transition threshold low" index="0x4008" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Low transition from bidirectional two phase to bidirectional three phase shifting, should be less than or equal to the high transition value</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>2621</defaultDU>
+      <defaultPU>8</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="fSys" symbolName="CFG_F_SYS_MHZ" displayName="System clock frequency" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="MHz" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>This configures the system clock frequency.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>40</defaultDU>
+      <defaultPU>40</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>1000</maxDU>
+      <minPU>1</minPU>
+      <maxPU>1000</maxPU>
+   </param>
+   <param name="frequency" symbolName="CFG_FREQUENCY_KHZ" displayName="PWM frequency" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="kHz" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>PWM frequency in kHz</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20</defaultDU>
+      <defaultPU>20</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>400</maxDU>
+      <minPU>1</minPU>
+      <maxPU>400</maxPU>
+   </param>
+   <param name="baseVoltage" symbolName="CFG_BASE_VOLTAGE_V" displayName="Base voltage" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="V" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base voltage for Q15 normalization of voltage related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>24000</defaultDU>
+      <defaultPU>24</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+   </param>
+   <param name="minOnTime" symbolName="CFG_MIN_ON_TIME_TICK" displayName="Min on time of PWM-pulse in ticks" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="ticks" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Min on time of PWM-pulse in ticks</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="tableSin60Sqrt3LUTSize" symbolName="CFG_TABLESIN60SQRT3_LUT_SIZE" displayName="Lookup table size" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Lookup table size</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>12</defaultDU>
+      <defaultPU>12</defaultPU>
+      <enumEntry name="ten_bits" value="10"/>
+      <enumEntry name="twelve_bits" value="12"/>
+   </param>
+   <param name="currentMeasurementTopology" symbolName="CFG_CURRENT_MEASUREMENT_TOPOLOGY" displayName="Current measurement topology" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Configures whether current measurement topology is single shunt or three shunt</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="Single DC-Link shunt" value="0"/>
+      <enumEntry name="Three leg shunt" value="1"/>
+   </param>
+   <param name="brakeOutBehavior" symbolName="CFG_BRAKE_OUT_BEHAVIOR" displayName="Brake mode output behavior" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Brake mode output behavior</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="Active Short Low" value="0"/>
+      <enumEntry name="Active Short High" value="1"/>
+      <enumEntry name="Active Short High Low" value="2"/>
+   </param>
+   <param name="faultOutBehavior" symbolName="CFG_FAULT_OUT_BEHAVIOR" displayName="Fault output behavior" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>When the modulator reacts on a fault one of three fault behaviors can be selected. So this fault behavior is only used in case a fault reaction is set to Report and react.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="Active Short Low" value="0"/>
+      <enumEntry name="Active Short High" value="1"/>
+      <enumEntry name="Active Short High Low" value="2"/>
+   </param>
+   <param name="faultReactionMaxAmplitude" symbolName="CFG_FAULT_REACTION_MAX_AMPLITUDE" displayName="Fault reaction on max amplitude reached" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Fault reaction on max amplitude reached condition. </description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="Disable" value="0"/>
+      <enumEntry name="Enable" value="1"/>
+      <enumEntry name="Report Only" value="2"/>
+      <enumEntry name="Report and React" value="3"/>
+   </param>
+   <param name="faultReactionOvermodulation" symbolName="CFG_FAULT_REACTION_OVERMODULATION" displayName="Fault reaction on overmodulation" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Fault reaction on overmodulation reached condition.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="Disable" value="0"/>
+      <enumEntry name="Enable" value="1"/>
+      <enumEntry name="Report Only" value="2"/>
+      <enumEntry name="Report and React" value="3"/>
+   </param>
+   <param name="enableFaultOut" symbolName="CFG_ENABLE_FAULT_OUT" displayName="Enable fault user callback" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="bool" dataTypeTU="bool" dataTypePU="bool" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>This enables or disables a fault user callback</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1</maxDU>
+      <minPU>0</minPU>
+      <maxPU>1</maxPU>
+   </param>
+   <param name="state" symbolName="p_status.state" displayName="State" index="0x4010" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>State machine state of the Modulator</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="init" value="0"/>
+      <enumEntry name="off" value="1"/>
+      <enumEntry name="on" value="2"/>
+      <enumEntry name="fault" value="3"/>
+      <enumEntry name="brake" value="4"/>
+   </param>
+   <param name="subState" symbolName="p_status.subState" displayName="Sub state" index="0x4011" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>Sub state of the Modulator</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="bidirectionalTwoPhase" value="0"/>
+      <enumEntry name="bidirectionalThreePhase" value="1"/>
+   </param>
+   <param name="error_maxAmplitudeFlag" symbolName="p_status.maxAmplitudeFlag" displayName="Max amplitude flag" index="0x4012" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="bool" dataTypeTU="bool" dataTypePU="bool" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>Error status flag. Is set when max amplitude is reached.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1</maxDU>
+      <minPU>0</minPU>
+      <maxPU>1</maxPU>
+   </param>
+   <param name="error_overmodulationFlag" symbolName="p_status.overmodulationFlag" displayName="Over modulation flag" index="0x4013" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="bool" dataTypeTU="bool" dataTypePU="bool" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>Error status flag. Is set when over modulation is reached.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1</maxDU>
+      <minPU>0</minPU>
+      <maxPU>1</maxPU>
+   </param>
+   <param name="compareValues" symbolName="p_output.compareValues_tick" displayName="Output PWM timer compare values" index="0x4014" dynamicConfig="false" staticConfig="false" subIndexCount="6" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="ticks" accessMode="readOnly" userLevel="2" generatePattern="memberInSelfStruct">
+      <!-- This PDO is an array and currently still not support by ParamTable. dynamicConfig is false to hide this parameter -->
+      <description>The timer compare values for the CCU phase switches (HS), separated for up-counting and for down-counting on each phase, total of six signals, in timer ticks:
+index 0: phase U, up-counting
+index 1: phase V, up-counting
+index 2: phase W, up-counting
+index 3: phase U, down-counting
+index 4: phase V, down-counting
+index 5: phase W, down-counting</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>2000</defaultDU>
+      <defaultPU>2000</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="triggerTime" symbolName="p_output.triggerTime_tick" displayName="Output current measurement trigger time" index="0x4015" dynamicConfig="false" staticConfig="false" subIndexCount="2" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="ticks" accessMode="readOnly" userLevel="2" generatePattern="memberInSelfStruct">
+      <!-- This PDO is an array and currently still not support by ParamTable. dynamicConfig is false to hide this parameter -->
+      <description>This output contains the timer values for current measurement events. For single-shunt scheme, the modulator calculates the values for trigger time 1 and trigger timer 2 to meet one of the following conditions:
+- case A:
+- trigger timer 1 is within a pulse where a phase X is active. X is any phase of U, V or W.
+- trigger timer 2 is within the pulse where two phases are active. One of the two phases is phase X.
+- case B:
+- trigger timer 1 is within a pulse where a phase X is active. X is any phase of U, V or W.
+- trigger timer 2 is within the pulse where another phase is active.
+The trigger timer 1 and trigger timer 2 are the tick count starting from zero match.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>2</defaultDU>
+      <defaultPU>2</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="actualVoltageAmplitude" symbolName="p_output.actualVoltage.amplitude" displayName="Output actual voltage amplitude" index="0x4016" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="V" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This output represents the amplitude of the resulting voltage space vector in polar coordinates. Range: [0; upper limit], where the &quot;upper limit&quot; is the minimum of the following:
+- Maximum amplitude
+- The value of the reference voltage at which overmodulation occurs which depends on the input dcLinkVoltage_V as follows: Uref_overmod = 0.907 * 2 / pi * dcLinkVoltage_V</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-24</minPU>
+      <maxPU>24</maxPU>
+   </param>
+   <param name="actualVoltageAngle" symbolName="p_output.actualVoltage.angle" displayName="Output actual voltage angle" index="0x4017" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="rad" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This output represents the angle of the resulting voltage space vector in polar coordinates. This is equal to the input reference voltage angle. 0xFFFFFFFF = 2*pi = 360degree</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>4294967295</maxDU>
+      <minPU>0</minPU>
+      <maxPU>6.2832</maxPU>
+   </param>
+   <param name="currentReconstructionInfoSector" symbolName="p_output.currentReconstructionInfo.sector" displayName="Output current reconstruction info sector" index="0x4018" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This output contains the sector number which is needed for current reconstruction, with range between 0 and 5</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>5</maxDU>
+      <minPU>0</minPU>
+      <maxPU>5</maxPU>
+   </param>
+   <param name="currentReconstructionInfoSecondTriggerIsSum" symbolName="p_output.currentReconstructionInfo.secondTriggerIsSum" displayName="Output current reconstruction info second trigger is sum" index="0x4019" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="bool" dataTypeTU="bool" dataTypePU="bool" decimalPlaces="0" step="1" accessMode="readOnly" userLevel="2" generatePattern="memberInSelfStruct">
+      <description>This output contains the flag to identify whether the second current trigger is during the period where two phases are active (case A), during the period where only one phase is active (case B)</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1</maxDU>
+      <minPU>0</minPU>
+      <maxPU>1</maxPU>
+   </param>
+</component>

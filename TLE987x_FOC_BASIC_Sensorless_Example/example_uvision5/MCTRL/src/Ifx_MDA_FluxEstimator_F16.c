@@ -1,0 +1,345 @@
+/*
+ * Copyright (c) 2024 Infineon Technologies AG. All Rights Reserved.
+ *
+ * Use of this file is subject to the terms of use agreed between (i) you or the company in which ordinary course of
+ * business you are acting and (ii) Infineon Technologies AG, its affiliates or its licensees. If and as long as no
+ * such terms of use are agreed, use of this file is subject to the Evaluation Software License Agreement distributed
+ * along with this file within the software delivery package.
+ *
+ */
+
+/******************************************************************************/
+/*----------------------------------Includes----------------------------------*/
+/******************************************************************************/
+#include "Ifx_MDA_FluxEstimator_F16.h"
+#include "Ifx_MDA_FluxEstimator_F16_Cfg.h"
+
+/* C library */
+#include "stddef.h"
+
+/* Math library includes */
+#include "Ifx_Math_Arithmetic_F16.h"
+#include "Ifx_Math_Atan2.h"
+#include "Ifx_Math_Div.h"
+#include "Ifx_Math_DivShLSat.h"
+#include "Ifx_Math_LowPass1st_F16.h"
+#include "Ifx_Math_Mul.h"
+#include "Ifx_Math_MulShRSat.h"
+#include "Ifx_Math_PLL_F16.h"
+#include "Ifx_Math_Sub.h"
+
+/* CMSIS includes */
+#include "cmsis_compiler.h"
+
+/******************************************************************************/
+/*-----------------------------------Macros-----------------------------------*/
+/******************************************************************************/
+/* Macro to define number of decimal places parameters with variable Q formats */
+#define IFX_MDA_FLUXESTIMATOR_F16_DEC_PLACES               10000
+
+/* Macros to define the component ID */
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_SOURCEID     ((uint8_t)Ifx_ComponentID_SourceID_infineonTechnologiesAG)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_LIBRARYID    ((uint16_t)Ifx_ComponentID_LibraryID_mctrlDriveAlgorithm)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_MODULEID     (0U)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_COMPONENTID1 (1U)
+
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_COMPONENTID2 ((uint8_t)Ifx_ComponentID_ComponentID2_basic)
+
+/* Macros to define the component version */
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_MAJOR   (2U)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_MINOR   (0U)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_PATCH   (0U)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_T       (4U)
+#define IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_REV     (0U)
+
+/******************************************************************************/
+/*-----------------------Private Function Prototypes--------------------------*/
+/******************************************************************************/
+/* Private functions to initialize and configure filters of the FE */
+void Ifx_MDA_FluxEstimator_F16_initAlphaFilter(Ifx_MDA_FluxEstimator_F16* self);
+void Ifx_MDA_FluxEstimator_F16_initBetaFilter(Ifx_MDA_FluxEstimator_F16* self);
+void Ifx_MDA_FluxEstimator_F16_initSpeedFilter(Ifx_MDA_FluxEstimator_F16* self);
+
+/* Private function to calculate a rotor flux axis referred to a stator axis */
+static inline Ifx_Math_Fract16 Ifx_MDA_FluxEstimator_F16_calcFlux(Ifx_Math_LowPass1st_F16* filter, Ifx_Math_Fract16
+                                                                  statorVoltage, Ifx_Math_Fract16 statorCurrent,
+                                                                  Ifx_Math_Fract16 phaseResQ15, Ifx_Math_Fract16
+                                                                  phaseIndAdjustedQ15);
+
+/******************************************************************************/
+/*------------------------Private Variables/Constants-------------------------*/
+/******************************************************************************/
+/* *INDENT-OFF* */
+/* Component ID */
+static const Ifx_ComponentID      Ifx_MDA_FluxEstimator_F16_componentID = {
+    .sourceID     = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_SOURCEID,
+    .libraryID    = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_LIBRARYID,
+    .moduleID     = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_MODULEID,
+    .componentID1 = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_COMPONENTID1,
+    .componentID2 = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTID_COMPONENTID2,
+};
+
+/* Component Version */
+static const Ifx_ComponentVersion Ifx_MDA_FluxEstimator_F16_componentVersion = {
+    .major = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_MAJOR,
+    .minor = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_MINOR,
+    .patch = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_PATCH,
+    .t     = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_T,
+    .rev   = IFX_MDA_FLUXESTIMATOR_F16_COMPONENTVERSION_REV
+};
+
+/******************************************************************************/
+/*-----------------------Exported Variables/Constants-------------------------*/
+/******************************************************************************/
+/* temporary solution, XML_VERSION indicates if static cfg is generated by cfgwiz */
+#ifdef IFX_MDA_FLUXESTIMATOR_F16_CFG_XML_VERSION
+/* Default parameters initialized with CfgWizard defines */
+Ifx_MDA_FluxEstimator_F16_Param Ifx_MDA_FluxEstimator_F16_g_defaultParam =
+{
+    .alphaFilter_timeConstant_us = IFX_MDA_FLUXESTIMATOR_F16_CFG_ALPHA_TC_US,
+    .betaFilter_timeConstant_us = IFX_MDA_FLUXESTIMATOR_F16_CFG_BETA_TC_US,
+    .speedFilter_timeConstant_us = IFX_MDA_FLUXESTIMATOR_F16_CFG_SPEED_TC_US,
+    .pllFilter_propGain = IFX_MDA_FLUXESTIMATOR_F16_CFG_PLL_GAIN_TU,
+    .samplingTime_us = IFX_MDA_FLUXESTIMATOR_F16_CFG_SAMPLING_TIME_US,
+    .phaseIndAdjustedQ15 = IFX_MDA_FLUXESTIMATOR_F16_CFG_PHASE_IND_ADJUSTED_Q15,
+    .alphaGainAdjustedQ14 = IFX_MDA_FLUXESTIMATOR_F16_CFG_ALPHA_GAIN_ADJUSTED_Q14,
+    .betaGainAdjustedQ14 = IFX_MDA_FLUXESTIMATOR_F16_CFG_BETA_GAIN_ADJUSTED_Q14,
+    .systemBaseTimeQ30 = IFX_MDA_FLUXESTIMATOR_F16_CFG_SYSTEM_BASE_TIME_Q30,
+    .phaseResQ15 = IFX_MDA_FLUXESTIMATOR_F16_CFG_PHASE_RES_Q15,
+};
+#endif
+/* *INDENT-ON* */
+/******************************************************************************/
+/*-------------------------Function Implementations---------------------------*/
+/******************************************************************************/
+/* Function to get the component ID */
+void Ifx_MDA_FluxEstimator_F16_getID(const Ifx_ComponentID** componentID)
+{
+    *componentID = &Ifx_MDA_FluxEstimator_F16_componentID;
+}
+
+
+/* Function to get the component version */
+void Ifx_MDA_FluxEstimator_F16_getVersion(const Ifx_ComponentVersion** componentVersion)
+{
+    *componentVersion = &Ifx_MDA_FluxEstimator_F16_componentVersion;
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_init(Ifx_MDA_FluxEstimator_F16* self, Ifx_MDA_FluxEstimator_F16_Param* param)
+{
+    /* Initialize pointer to parameter structure */
+    self->param = param;
+
+    /* Initialize parameter copies for optimized access in calcFlux */
+    self->p_phaseIndAdjustedQ15 = self->param->phaseIndAdjustedQ15;
+    self->p_phaseResQ15         = self->param->phaseResQ15;
+
+    /* Initialize filters */
+    Ifx_MDA_FluxEstimator_F16_initAlphaFilter(self);
+    Ifx_MDA_FluxEstimator_F16_initBetaFilter(self);
+    Ifx_MDA_FluxEstimator_F16_initSpeedFilter(self);
+
+    /* Initialize PLL */
+    Ifx_Math_PLL_F16_init(&self->p_pllFilter);
+
+    /* Set PLL gain */
+    Ifx_Math_Fract16Q propGainQ = Ifx_Math_ConvToQForm_F16(self->param->pllFilter_propGain,
+        IFX_MDA_FLUXESTIMATOR_F16_DEC_PLACES);
+    Ifx_Math_PLL_F16_setPropGain(&self->p_pllFilter, propGainQ);
+
+    /* Initialize sampling time from parameter */
+    Ifx_MDA_FluxEstimator_F16_setSamplingTime(self, self->param->samplingTime_us);
+
+    /* Reset outputs */
+    self->p_output.anglePLL = 0;
+    self->p_output.speedQ15 = 0;
+
+    /* Set initial operation mode to disabled */
+    self->p_mode = Ifx_MDA_FluxEstimator_F16_Mode_disable;
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_initAlphaFilter(Ifx_MDA_FluxEstimator_F16* self)
+{
+    /* Initialize filters */
+    Ifx_Math_LowPass1st_F16_init(&(self->p_alphaFilter));
+
+    /* Set alpha filter parameters */
+    Ifx_Math_LowPass1st_F16_setTimeConstant_us(&(self->p_alphaFilter), self->param->alphaFilter_timeConstant_us);
+    Ifx_Math_LowPass1st_F16_setGain(&(self->p_alphaFilter), self->param->alphaGainAdjustedQ14);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setAlphaTimeConstant(Ifx_MDA_FluxEstimator_F16* self, uint32_t
+                                                    alphaFilter_timeConstant_us)
+{
+    /* Set internal parameter */
+    self->param->alphaFilter_timeConstant_us = alphaFilter_timeConstant_us;
+
+    /* Call set API of LowPassFilter */
+    Ifx_Math_LowPass1st_F16_setTimeConstant_us(&(self->p_alphaFilter), alphaFilter_timeConstant_us);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setBetaTimeConstant(Ifx_MDA_FluxEstimator_F16* self, uint32_t
+                                                   betaFilter_timeConstant_us)
+{
+    /* Set internal parameter */
+    self->param->betaFilter_timeConstant_us = betaFilter_timeConstant_us;
+
+    /* Call set API of LowPassFilter */
+    Ifx_Math_LowPass1st_F16_setTimeConstant_us(&(self->p_betaFilter), betaFilter_timeConstant_us);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setSpeedFilterTimeConstant(Ifx_MDA_FluxEstimator_F16* self, uint32_t
+                                                          speedFilter_timeConstant_us)
+{
+    /* Set internal parameter */
+    self->param->speedFilter_timeConstant_us = speedFilter_timeConstant_us;
+
+    /* Call set API of LowPassFilter */
+    Ifx_Math_LowPass1st_F16_setTimeConstant_us(&(self->p_speedFilter), speedFilter_timeConstant_us);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setPllFilterPropGain(Ifx_MDA_FluxEstimator_F16* self, uint32_t pllPropGain)
+{
+    /* Set internal parameter */
+    self->param->pllFilter_propGain = pllPropGain;
+    Ifx_Math_Fract16Q propGainQ = Ifx_Math_ConvToQForm_F16(pllPropGain, IFX_MDA_FLUXESTIMATOR_F16_DEC_PLACES);
+
+    /* Call set API of LowPassFilter */
+    Ifx_Math_PLL_F16_setPropGain(&(self->p_pllFilter), propGainQ);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_initBetaFilter(Ifx_MDA_FluxEstimator_F16* self)
+{
+    /* Initialize filters */
+    Ifx_Math_LowPass1st_F16_init(&(self->p_betaFilter));
+
+    /* Set beta filter parameters */
+    Ifx_Math_LowPass1st_F16_setTimeConstant_us(&(self->p_betaFilter), self->param->betaFilter_timeConstant_us);
+    Ifx_Math_LowPass1st_F16_setGain(&(self->p_betaFilter), self->param->betaGainAdjustedQ14);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_initSpeedFilter(Ifx_MDA_FluxEstimator_F16* self)
+{
+    /* Initialize filters */
+    Ifx_Math_LowPass1st_F16_init(&(self->p_speedFilter));
+
+    /* Set speed filter parameters */
+    Ifx_Math_LowPass1st_F16_setTimeConstant_us(&(self->p_speedFilter), self->param->speedFilter_timeConstant_us);
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setSamplingTime(Ifx_MDA_FluxEstimator_F16* self, uint16_t samplingTime_us)
+{
+    self->param->samplingTime_us = samplingTime_us;
+
+    /* Convert sampling time from microseconds to seconds, in Ifx_Math_FractQFormat_q30 */
+    uint64_t         samplingTimeScaled = (uint64_t)samplingTime_us << (uint8_t)Ifx_Math_FractQFormat_q30;
+    Ifx_Math_Fract32 samplingTimeQ30    = (Ifx_Math_Fract32)((int64_t)samplingTimeScaled /
+                                                             IFX_MATH_MICROSECONDS_TO_SECONDS);
+
+    /* Calculate the conversion factor * sampling time, in Q7 */
+    int8_t           shiftFactor         = Ifx_Math_DivShL_ShiftDiv(Ifx_Math_FractQFormat_q30,
+        Ifx_Math_FractQFormat_q30, Ifx_Math_FractQFormat_q7);
+    Ifx_Math_Fract32 radToRadPerSecondQ7 = Ifx_Math_DivShLSat_F32(self->param->systemBaseTimeQ30, samplingTimeQ30,
+        (uint8_t)shiftFactor);
+    self->p_radToRadPerSecondQ7 = Ifx_Math_Sat_F16_F32(radToRadPerSecondQ7);
+
+    /* Set sampling time in the dependent modules */
+    Ifx_Math_LowPass1st_F16_setSamplingTime_us(&(self->p_alphaFilter), samplingTime_us);
+    Ifx_Math_LowPass1st_F16_setSamplingTime_us(&(self->p_betaFilter), samplingTime_us);
+    Ifx_Math_LowPass1st_F16_setSamplingTime_us(&(self->p_speedFilter), samplingTime_us);
+    Ifx_Math_PLL_F16_setSamplingTime_us(&self->p_pllFilter, samplingTime_us);
+}
+
+
+__USED void Ifx_MDA_FluxEstimator_F16_execute(Ifx_MDA_FluxEstimator_F16* self, Ifx_Math_CmpFract16 statorVoltage,
+                                              Ifx_Math_CmpFract16 statorCurrent)
+{
+    /* Local variable declaration */
+    Ifx_Math_CmpFract16   rotorFlux;
+    uint32_t              estimatedAngle;
+    Ifx_Math_PLL_F16_Type pllResult;
+    Ifx_Math_Fract16      estimatedElecSpeed;
+
+    if (self->p_mode == Ifx_MDA_FluxEstimator_F16_Mode_enable)
+    {
+        /* Calculate the estimated rotor flux */
+        rotorFlux.real = Ifx_MDA_FluxEstimator_F16_calcFlux(&self->p_alphaFilter, statorVoltage.real,
+            statorCurrent.real, self->p_phaseResQ15, self->p_phaseIndAdjustedQ15);
+        rotorFlux.imag = Ifx_MDA_FluxEstimator_F16_calcFlux(&self->p_betaFilter, statorVoltage.imag,
+            statorCurrent.imag, self->p_phaseResQ15, self->p_phaseIndAdjustedQ15);
+
+        /* Get the angle estimation from the rotor flux */
+        estimatedAngle = Ifx_Math_Atan2_F16(rotorFlux.imag, rotorFlux.real);
+
+        /* Execute the PLL filter */
+        pllResult = Ifx_Math_PLL_F16_execute(&self->p_pllFilter, estimatedAngle);
+
+        /* Convert angle derivative from PLL to normalized rad/s */
+        estimatedElecSpeed = Ifx_Math_MulShRSat_F16(pllResult.deltaAngle / 2, self->p_radToRadPerSecondQ7, 7u);
+
+        /* Filter and output normalized speed */
+        self->p_output.speedQ15 = Ifx_Math_LowPass1st_F16_execute(&(self->p_speedFilter), estimatedElecSpeed);
+        self->p_output.anglePLL = pllResult.angle;
+    }
+    else
+    {
+        /* Speed shall be set to zero and angle shall be kept at last value if Flux Estimator is disabled */
+        self->p_output.speedQ15 = 0;
+    }
+}
+
+
+static inline Ifx_Math_Fract16 Ifx_MDA_FluxEstimator_F16_calcFlux(Ifx_Math_LowPass1st_F16* filter, Ifx_Math_Fract16
+                                                                  statorVoltage, Ifx_Math_Fract16 statorCurrent,
+                                                                  Ifx_Math_Fract16 phaseResQ15, Ifx_Math_Fract16
+                                                                  phaseIndAdjustedQ15)
+{
+    /* Local variable declaration */
+    Ifx_Math_Fract16 resVoltage;
+    Ifx_Math_Fract16 indVoltageAdjusted;
+    Ifx_Math_Fract16 inducedVoltage;
+    Ifx_Math_Fract16 statorFluxAdjusted;
+    Ifx_Math_Fract16 rotorFluxAdjusted;
+
+    /* U_R = I*R */
+    resVoltage = Ifx_Math_Mul_F16(statorCurrent, phaseResQ15);
+
+    /* U_L = I*L */
+    indVoltageAdjusted = Ifx_Math_Mul_F16(statorCurrent, phaseIndAdjustedQ15);
+
+    /* Uind = Us -U_R */
+    inducedVoltage = Ifx_Math_Sub_F16(statorVoltage, resVoltage);
+
+    /* Calculate stator flux, Psi_s = integral(Uind) */
+    statorFluxAdjusted = Ifx_Math_LowPass1st_F16_execute(filter, inducedVoltage);
+
+    /* Calculate the estimated rotor flux, Psi_r = Psi_s -Uind */
+    rotorFluxAdjusted = Ifx_Math_Sub_F16(statorFluxAdjusted, indVoltageAdjusted);
+
+    /* Return rotor flux */
+    return rotorFluxAdjusted;
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setPhaseRes(Ifx_MDA_FluxEstimator_F16* self, Ifx_Math_Fract16 phaseResQ15)
+{
+    self->param->phaseResQ15 = phaseResQ15;
+    self->p_phaseResQ15      = phaseResQ15;
+}
+
+
+void Ifx_MDA_FluxEstimator_F16_setPhaseIndAdjusted(Ifx_MDA_FluxEstimator_F16* self, Ifx_Math_Fract16
+                                                   phaseIndAdjustedQ15)
+{
+    self->param->phaseIndAdjustedQ15 = phaseIndAdjustedQ15;
+    self->p_phaseIndAdjustedQ15      = phaseIndAdjustedQ15;
+}

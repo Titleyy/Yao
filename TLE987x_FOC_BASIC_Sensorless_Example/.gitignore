@@ -1,0 +1,15 @@
+# Temporary build artifacts
+*.bak
+*.crf
+*.d
+*.o
+*.cache
+
+# Eclipse
+.cproject
+.project
+.pydevproject
+.settings
+
+# Vesper autosave extension
+*_autosave.vesp

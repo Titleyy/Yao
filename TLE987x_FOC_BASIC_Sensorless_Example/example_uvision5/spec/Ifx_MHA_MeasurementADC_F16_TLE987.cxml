@@ -1,0 +1,223 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="MeasurementADC_F16_TLE987" displayName="MeasurementADC" library="Ifx_MHA" multiInstance="true" includes="" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="csaGain" symbolName="CFG_CSA_GAIN" displayName="CSA gain" index="0x3100" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="configDefine">
+      <description>Current sense amplifier gain</description>
+      <targetEvent getValueDU="Ifx_MHA_MeasurementADC_F16_TLE987_getCsaGain" setValueDU="Ifx_MHA_MeasurementADC_F16_TLE987_setCsaGain"/>
+      <defaultDU>3</defaultDU>
+      <defaultPU>3</defaultPU>
+      <enumEntry name="G10" value="0"/>
+      <enumEntry name="G20" value="1"/>
+      <enumEntry name="G40" value="2"/>
+      <enumEntry name="G60" value="3"/>
+   </param>
+   <param name="offset" symbolName="p_offset" displayName="CSA offset" index="0x3101" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="memberInSelfStruct">
+      <description>Current sense amplifier offset. An offset calibration is performed always between states off and on (When powerstage is enabled). To measure the offset again the parameter calibrateCSA can be set to 1. This will trigger a calibration sequence.</description>
+      <targetEvent getValueDU="Ifx_MHA_MeasurementADC_F16_TLE987_getCsaOffset" setValueDU="Ifx_MHA_MeasurementADC_F16_TLE987_setCsaOffset"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16384</maxDU>
+      <minPU>0</minPU>
+      <maxPU>16384</maxPU>
+   </param>
+   <param name="calibrateCSA" symbolName="p_calibrateCSA" displayName="Calibrate CSA offset" index="0x3102" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="memberInSelfStruct">
+      <description>Current sense amplifier offset calibration. Setting a 1 will start a calibration sequence. Calibration end is shown on monitoring output state. It will leave state calibration and enter state on.</description>
+      <targetEvent getValueDU="Ifx_MHA_MeasurementADC_F16_TLE987_getCsaOffset" setValueDU="Ifx_MHA_MeasurementADC_F16_TLE987_setCsaOffset"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16384</maxDU>
+      <minPU>0</minPU>
+      <maxPU>16384</maxPU>
+   </param>
+   <param name="baseVoltage" symbolName="CFG_BASE_VOLTAGE_V" displayName="Base voltage" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="V" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base voltage for Q15 normalization of voltage related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>24000</defaultDU>
+      <defaultPU>24</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+   </param>
+   <param name="baseCurrent" symbolName="CFG_BASE_CURRENT_A" displayName="Base current" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="A" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base current for Q15 normalization of current related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>5000</defaultDU>
+      <defaultPU>5</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+   </param>
+   <param name="shuntRes" symbolName="CFG_SHUNT_RES" displayName="Shunt resistance" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="Ohm" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Shunt resistance of current sense single shunt</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>50</defaultDU>
+      <defaultPU>0.005</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>1000</maxDU>
+      <minPU>0.0001</minPU>
+      <maxPU>0.1</maxPU>
+   </param>
+   <param name="calibrationCycles" symbolName="CFG_CALIBRATION_CYCLES" displayName="CSA calibration cycles" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="counts" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Current sense amplifier offset calibration cycles</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>128</defaultDU>
+      <defaultPU>128</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>256</maxDU>
+      <minPU>1</minPU>
+      <maxPU>256</maxPU>
+   </param>
+   <param name="convertVdcToQ15" symbolName="CFG_CONVERT_VDC_TO_Q15" displayName="DC link voltage conversion factor" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>DC link voltage conversion factor. Factor and shift are used to convert the voltage into Q15 value.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20480</defaultDU>
+      <defaultPU>20480</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="vdcBits" symbolName="CFG_VDC_BITS" displayName="DC link voltage conversion shift" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>DC link voltage conversion shift. Factor and shift are used to convert the voltage into Q15 value.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>11</defaultDU>
+      <defaultPU>11</defaultPU>
+      <minDU>7</minDU>
+      <maxDU>24</maxDU>
+      <minPU>7</minPU>
+      <maxPU>24</maxPU>
+   </param>
+   <param name="currentGainQ10" symbolName="CFG_CURRENT_GAIN_Q_10" displayName="Current conversion factor for CSA gain = 10" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion factor. Factor and shift are used to convert the currents into Q15 values when CSA gain is 10.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20480</defaultDU>
+      <defaultPU>20480</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>32767</maxPU>
+   </param>
+   <param name="currentGainQ20" symbolName="CFG_CURRENT_GAIN_Q_20" displayName="Current conversion factor for CSA gain = 20" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion factor. Factor and shift are used to convert the currents into Q15 values when CSA gain is 20.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20480</defaultDU>
+      <defaultPU>20480</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>32767</maxPU>
+   </param>
+   <param name="currentGainQ40" symbolName="CFG_CURRENT_GAIN_Q_40" displayName="Current conversion factor for CSA gain = 40" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion factor. Factor and shift are used to convert the currents into Q15 values when CSA gain is 40.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20480</defaultDU>
+      <defaultPU>20480</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>32767</maxPU>
+   </param>
+   <param name="currentGainQ60" symbolName="CFG_CURRENT_GAIN_Q_60" displayName="Current conversion factor for CSA gain = 60" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion factor. Factor and shift are used to convert the currents into Q15 values when CSA gain is 60.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>27306</defaultDU>
+      <defaultPU>27306</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>32767</maxPU>
+   </param>
+   <param name="currentGainShift10" symbolName="CFG_CURRENT_GAIN_SHIFT_10" displayName="Current conversion shift for CSA gain = 10" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion shift. Factor and shift are used to convert the currents into Q15 values when CSA gain is 10.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>7</defaultDU>
+      <defaultPU>7</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16</maxDU>
+      <minPU>0</minPU>
+      <maxPU>16</maxPU>
+   </param>
+   <param name="currentGainShift20" symbolName="CFG_CURRENT_GAIN_SHIFT_20" displayName="Current conversion shift for CSA gain = 20" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion shift. Factor and shift are used to convert the currents into Q15 values when CSA gain is 20.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>8</defaultDU>
+      <defaultPU>8</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16</maxDU>
+      <minPU>0</minPU>
+      <maxPU>16</maxPU>
+   </param>
+   <param name="currentGainShift40" symbolName="CFG_CURRENT_GAIN_SHIFT_40" displayName="Current conversion shift for CSA gain = 40" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt  current conversion shift. Factor and shift are used to convert the currents into Q15 values when CSA gain is 40.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>9</defaultDU>
+      <defaultPU>9</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16</maxDU>
+      <minPU>0</minPU>
+      <maxPU>16</maxPU>
+   </param>
+   <param name="currentGainShift60" symbolName="CFG_CURRENT_GAIN_SHIFT_60" displayName="Current conversion shift for CSA gain = 60" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="configDefine">
+      <description>Shunt current conversion shift. Factor and shift are used to convert the currents into Q15 values when CSA gain is 60.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10</defaultDU>
+      <defaultPU>10</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16</maxDU>
+      <minPU>0</minPU>
+      <maxPU>16</maxPU>
+   </param>
+   <param name="vmonSenSelInrange" symbolName="CFG_VMON_SEN_SEL_INRANGE" displayName="VDH Monitoring Input Attenuator Select Input Range" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>VDH Monitoring Input Attenuator Select Input Range</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="ZeroToTwentyVolt" value="0"/>
+      <enumEntry name="ZeroToThirtyVolt" value="1"/>
+   </param>
+   <param name="state" symbolName="p_status.state" displayName="State" index="0x3110" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="memberInSelfStruct">
+      <description>State machine state of the Measurement ADC.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="init" value="0"/>
+      <enumEntry name="off" value="1"/>
+      <enumEntry name="on" value="2"/>
+      <enumEntry name="calibration" value="3"/>
+   </param>
+   <param name="shuntCurrents_0" symbolName="p_output.shuntCurrentsQ15[0]" displayName="Measured shunt current 0" index="0x3111" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="A" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="memberInSelfStruct">
+      <description>This is the first of two measured shunt currents from single shunt topology.
+</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-5</minPU>
+      <maxPU>5</maxPU>
+   </param>
+   <param name="shuntCurrents_1" symbolName="p_output.shuntCurrentsQ15[1]" displayName="Measured shunt current 1" index="0x3112" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="A" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="memberInSelfStruct">
+      <description>This is the second of two measured shunt currents from single shunt topology.
+</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-5</minPU>
+      <maxPU>5</maxPU>
+   </param>
+   <param name="dcLinkVoltage" symbolName="p_output.dcLinkVoltageQ15" displayName="Measured DC link voltage" index="0x3113" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="V" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="0" generatePattern="memberInSelfStruct">
+      <description>The measured voltage at the DC link capacitors.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-24</minPU>
+      <maxPU>24</maxPU>
+   </param>
+</component>

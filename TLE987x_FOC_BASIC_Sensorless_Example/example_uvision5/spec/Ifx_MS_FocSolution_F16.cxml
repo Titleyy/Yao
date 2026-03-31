@@ -1,0 +1,662 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="FocSolution_F16" displayName="FocSolution" library="Ifx_MS" multiInstance="true" includes="" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="startUpCurrent" symbolName="startUpCurrentQ15" displayName="Start-up current" index="0x5000" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="false" generatePattern="paramInStruct">
+      <description>Start-up current in % of base current.</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getStartUpCurrent" setValueDU="Ifx_MS_FocSolution_F16_setStartUpCurrent"/>
+      <defaultDU>6553</defaultDU>
+      <defaultPU>20</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="startUpCurrentRampUpRate" symbolName="startUpCurrentRampUpRateQ15" displayName="Start-up current ramp up rate" index="0x5001" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" physicalUnit="A/s" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="false" generatePattern="paramInStruct">
+      <description>This configures the ramp up rate of the start-up current.</description>
+      <targetEvent getValueDU="NULL" setValueDU="Ifx_MS_FocSolution_F16_setStartUpCurrentRampUpRate"/>
+      <defaultDU>39</defaultDU>
+      <defaultPU>4</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>3331</maxPU>
+   </param>
+   <param name="speedPiPropGain" symbolName="speedPiPropGain" displayName="Speed pi proportional gain" index="0x5002" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="A/rpm" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Speed pi proportional gain</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getSpeedPiPropGain" setValueDU="Ifx_MS_FocSolution_F16_setSpeedPiPropGain"/>
+      <defaultDU>24000</defaultDU>
+      <defaultPU>0.003</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>268.4355</maxPU>
+   </param>
+   <param name="speedPiIntegGainSamplingTime" symbolName="speedPiIntegGainSamplingTime" displayName="Speed pi integral gain" index="0x5003" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="A/rpms" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Speed pi integral gain</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getSpeedPiIntegGainSamplingTime" setValueDU="Ifx_MS_FocSolution_F16_setSpeedPiIntegGainSamplingTime"/>
+      <defaultDU>12</defaultDU>
+      <defaultPU>0.001</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>178778.0136</maxPU>
+   </param>
+   <param name="refCurrentUpperLimit" symbolName="refCurrentUpperLimitQ15" displayName="Speed pi output upper limit" index="0x5004" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Sets the output upper limit of speed pi and the reference current limiter in % of base current</description>
+      <targetEvent getValueDU="NULL" setValueDU="Ifx_MS_FocSolution_F16_setRefCurrentUpperLimit"/>
+      <defaultDU>13107</defaultDU>
+      <defaultPU>40</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-100</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="refCurrentLowerLimit" symbolName="refCurrentLowerLimitQ15" displayName="Speed pi output lower limit" index="0x5005" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Sets the output lower limit of speed pi and the reference current limiter in % of baseCurrent</description>
+      <targetEvent getValueDU="NULL" setValueDU="Ifx_MS_FocSolution_F16_setRefCurrentLowerLimit"/>
+      <defaultDU>-13107</defaultDU>
+      <defaultPU>-40</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-100</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="refSpeedUpperLimit" symbolName="refSpeedUpperLimitQ15" displayName="Reference speed upper limit" index="0x5006" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" generatePattern="paramInStruct">
+      <description>Reference speed limitation in % of baseMechSpeed</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getRefSpeedUpperLimit" setValueDU="Ifx_MS_FocSolution_F16_setRefSpeedUpperLimit"/>
+      <defaultDU>16384</defaultDU>
+      <defaultPU>50</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-100</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="refSpeedLowerLimit" symbolName="refSpeedLowerLimitQ15" displayName="Reference speed lower limit" index="0x5007" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" generatePattern="paramInStruct">
+      <description>Reference speed limitation in % of baseMechSpeed</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getRefSpeedLowerLimit" setValueDU="Ifx_MS_FocSolution_F16_setRefSpeedLowerLimit"/>
+      <defaultDU>-16384</defaultDU>
+      <defaultPU>-50</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-100</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="minimumSpeedThreshold" symbolName="minimumSpeedThresholdQ15" displayName="Speed threshold for transition from ramp down to standby" index="0x5008" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" generatePattern="paramInStruct">
+      <description>Speed threshold for transition from ramp down to standby</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="speedRampUpRateOpenLoop" symbolName="speedRampUpRateOpenLoopQ30" displayName="Open loop speed ramp up rate" index="0x5009" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int32_t" dataTypeTU="uint32_t" dataTypePU="uint32_t" decimalPlaces="0" step="1" physicalUnit="rpm/s" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>This configures the ramp up rate of the acceleration limiter when the control is in open loop</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getSpeedRampUpRateOpenLoop" setValueDU="Ifx_MS_FocSolution_F16_setSpeedRampUpRateOpenLoop"/>
+      <defaultDU>402921</defaultDU>
+      <defaultPU>1000</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>5329780</maxPU>
+   </param>
+   <param name="speedRampDownRateOpenLoop" symbolName="speedRampDownRateOpenLoopQ30" displayName="Open loop speed ramp down rate" index="0x500A" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int32_t" dataTypeTU="uint32_t" dataTypePU="uint32_t" decimalPlaces="0" step="1" physicalUnit="rpm/s" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>This configures the ramp down rate of the acceleration limiter when the control is in open loop</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getSpeedRampDownRateOpenLoop" setValueDU="Ifx_MS_FocSolution_F16_setSpeedRampDownRateOpenLoop"/>
+      <defaultDU>402921</defaultDU>
+      <defaultPU>1000</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>5329780</maxPU>
+   </param>
+   <param name="speedRampUpRateClosedLoop" symbolName="speedRampUpRateClosedLoopQ30" displayName="Closed loop speed ramp up rate" index="0x500B" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int32_t" dataTypeTU="uint32_t" dataTypePU="uint32_t" decimalPlaces="0" step="1" physicalUnit="rpm/s" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>This configures the ramp up rate of the acceleration limiter when the control is in closed loop</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getSpeedRampUpRateClosedLoop" setValueDU="Ifx_MS_FocSolution_F16_setSpeedRampUpRateClosedLoop"/>
+      <defaultDU>402921</defaultDU>
+      <defaultPU>1000</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>5329780</maxPU>
+   </param>
+   <param name="speedRampDownRateClosedLoop" symbolName="speedRampDownRateClosedLoopQ30" displayName="Closed loop speed ramp down rate" index="0x500C" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int32_t" dataTypeTU="uint32_t" dataTypePU="uint32_t" decimalPlaces="0" step="1" physicalUnit="rpm/s" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>This configures the ramp down rate of the acceleration limiter when the control is in closed loop</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getSpeedRampDownRateClosedLoop" setValueDU="Ifx_MS_FocSolution_F16_setSpeedRampDownRateClosedLoop"/>
+      <defaultDU>402921</defaultDU>
+      <defaultPU>1000</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>5329780</maxPU>
+   </param>
+   <param name="qCurrentAtTransition" symbolName="qCurrentAtTransitionQ15" displayName="Quadrature current at transition" index="0x500D" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>This configures the Quadrature current at transition in % of baseCurrent. Used in direct transition mode.</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getQCurrentAtTransition" setValueDU="Ifx_MS_FocSolution_F16_setQCurrentAtTransition"/>
+      <defaultDU>6554</defaultDU>
+      <defaultPU>20</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="transitionAngleTolerance" symbolName="transitionAngleTolerance" displayName="Transition angle tolerance" index="0x500E" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="deg" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>This configures the minimum angle error in degree to do the transition from transition up state to close loop state.</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getTransitionAngleTolerance" setValueDU="Ifx_MS_FocSolution_F16_setTransitionAngleTolerance"/>
+      <defaultDU>1820</defaultDU>
+      <defaultPU>10</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>16384</maxDU>
+      <minPU>0</minPU>
+      <maxPU>90</maxPU>
+   </param>
+   <param name="transitionTimeLimit" symbolName="transitionTimeLimit_cycles" displayName="Maximum transition time between open and closed loop" index="0x500F" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="0" step="2" physicalUnit="ms" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>This configures the maximum allowed time for the transition from transition up state to closed loop state or from transition down state to open loop state, transition time limit.</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getTransitionTimeLimit" setValueDU="Ifx_MS_FocSolution_F16_setTransitionTimeLimit"/>
+      <defaultDU>67</defaultDU>
+      <defaultPU>100</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>2</minPU>
+      <maxPU>98368</maxPU>
+   </param>
+   <param name="transitionDownDCurrentScaling" symbolName="transitionDownDCurrentScalingQ14" displayName="Transition down d current scaling factor" index="0x5010" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="3" step="0.001" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>This configures the transition down d current scaling factor</description>
+      <targetEvent getValueDU="Ifx_MS_FocSolution_F16_getTransitionDownDCurrentScalingQ14" setValueDU="Ifx_MS_FocSolution_F16_setTransitionDownDCurrentScalingQ14"/>
+      <defaultDU>8192</defaultDU>
+      <defaultPU>0.5</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>2</maxPU>
+   </param>
+   <param name="transitionSpeedUp" symbolName="transitionSpeedUpQ15" displayName="Transition speed up in % of base_mech_speed" index="0x5011" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>This configures the Transition speed up.</description>
+      <targetEvent getValueDU="NULL" setValueDU="Ifx_MS_FocSolution_F16_setTransitionSpeedUp"/>
+      <defaultDU>6553</defaultDU>
+      <defaultPU>20</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="transitionSpeedBand" symbolName="transitionSpeedBandQ15" displayName="Transition speed band" index="0x5012" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>This configures the Transition speed band.</description>
+      <targetEvent getValueDU="NULL" setValueDU="Ifx_MS_FocSolution_F16_setTransitionSpeedBand"/>
+      <defaultDU>2457</defaultDU>
+      <defaultPU>7.5</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="inverseTorqueConstant" symbolName="inverseTorqueConstant" displayName="Inverse torque constant" index="0x5013" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="2" generatePattern="paramInStruct">
+      <description>Inverse torque constant</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>53658</defaultDU>
+      <defaultPU>53658</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="frictionConstant" symbolName="frictionConstant" displayName="Viscous friction constant" index="0x5014" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="mNms" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="paramInStruct">
+      <description>Viscous friction constant for pre control</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>0</minPU>
+      <maxPU>0.1711</maxPU>
+   </param>
+   <param name="rotorInertiaOverSamplingTime" symbolName="rotorInertiaOverSamplingTime" displayName="Rotor inertia over sampling time value" index="0x5015" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="2" generatePattern="paramInStruct">
+      <description>Rotor inertia for pre control</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>23364</defaultDU>
+      <defaultPU>2.3364</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147480000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>214748</maxPU>
+   </param>
+   <param name="initStartupCurrent" symbolName="initStartupCurrentQ15" displayName="Initial Start-up current" index="0x5016" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="%" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="0" generatePattern="paramInStruct">
+      <description>Initial Start-up current in % of base current. Value must be &lt;= startup_current</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-100</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="speedPiAntiWindupGain" symbolName="speedPiAntiWindupGainSamplingTime" displayName="Speed pi anti-windup gain" index="0x5017" dynamicConfig="true" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="1/rpms" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="paramInStruct">
+      <description>Speed pi anti-windup gain </description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>60039</defaultDU>
+      <defaultPU>1</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>2147483647</maxDU>
+      <minPU>0</minPU>
+      <maxPU>35767</maxPU>
+   </param>
+   <param name="baseVoltage" symbolName="CFG_BASE_VOLTAGE_V" displayName="Base voltage" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="V" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base voltage for Q15 normalization of voltage related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>24000</defaultDU>
+      <defaultPU>24</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MAS.Modulator_F16.baseVoltage</refId>
+         <refId>Ifx_MDA.FocController_F16.baseVoltage</refId>
+         <refId>Ifx_MHA.DriverGroup_F16.baseVoltage</refId>
+      </setAndHide>
+   </param>
+   <param name="baseCurrent" symbolName="CFG_BASE_CURRENT_A" displayName="Base current" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="A" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base current for Q15 normalization of current related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>5000</defaultDU>
+      <defaultPU>5</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>10000000</maxDU>
+      <minPU>0.001</minPU>
+      <maxPU>10000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.baseCurrent</refId>
+         <refId>Ifx_MHA.DriverGroup_F16.baseCurrent</refId>
+      </setAndHide>
+   </param>
+   <param name="baseMechSpeed" symbolName="CFG_BASE_MECH_SPEED_RPM" displayName="Base mechanical speed" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="rpm" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Base mechanical speed for Q15 normalization of mechanical speed related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>4000</defaultDU>
+      <defaultPU>4000</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>1</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="baseResistance" symbolName="CFG_BASE_RESISTANCE_OHM" displayName="Base resistance" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="Ohm" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Base resistance for Q15 normalization of resistance related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>480</defaultDU>
+      <defaultPU>4.8</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>10000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.baseResistance</refId>
+      </setAndHide>
+   </param>
+   <param name="baseInductance" symbolName="CFG_BASE_INDUCTANCE_MH" displayName="Base inductance" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="mH" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Base inductance for Q15 normalization of inductance related parameters. Is calculated = base_power*base_time*base_current^-2</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>28657</defaultDU>
+      <defaultPU>2.8657</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1000000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FocController_F16.baseInductance</refId>
+         <refId>Ifx_MDA.FluxEstimator_F16.baseInductance</refId>
+      </setAndHide>
+   </param>
+   <param name="baseMechTorque" symbolName="CFG_BASE_MECH_TORQUE_NM" displayName="Base mechanical torque" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="Nm" accessMode="readOnly" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Base mechanical torque</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>2900</defaultDU>
+      <defaultPU>0.29</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1000000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="baseElecSpeed" symbolName="CFG_BASE_ELEC_SPEED_RADPS" displayName="Base electrical speed" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="rad/s" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Base electrical speed  for Q15 normalization of electrical speed related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1675</defaultDU>
+      <defaultPU>1675</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.IToFController_F16.baseElecSpeed</refId>
+         <refId>Ifx_MDA.VToFController_F16.baseElecSpeed</refId>
+      </setAndHide>
+   </param>
+   <param name="baseTime" symbolName="CFG_BASE_TIME_MS" displayName="Base time" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="ms" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="2" generatePattern="none">
+      <description>Base time is used for normalization of samplingTime_us. Is calculated = floor(2^30*2*pi)/(base_elec_speed))</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>5970</defaultDU>
+      <defaultPU>0.597</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>3183000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>318.3</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.systemBaseTime</refId>
+      </setAndHide>
+   </param>
+   <param name="basePower" symbolName="CFG_BASE_POWER_W" displayName="Base power" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="2" step="0.01" physicalUnit="W" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Base power for Q15 normalization of power related parameters.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>12000</defaultDU>
+      <defaultPU>120</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1000000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>10000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.basePower</refId>
+      </setAndHide>
+   </param>
+   <param name="fSys" symbolName="CFG_F_SYS_MHZ" displayName="System clock frequency" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="MHz" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>This is the system clock frequency. The value is used from IFX_MHA_DRIVERGROUP_F16_CFG.PWM_CLOCK_FREQ_MHZ</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>40</defaultDU>
+      <defaultPU>40</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>1000</maxDU>
+      <minPU>1</minPU>
+      <maxPU>1000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MAS.Modulator_F16.fSys</refId>
+      </setAndHide>
+   </param>
+   <param name="phaseRes" symbolName="CFG_PHASE_RES_OHM" displayName="Phase resistance" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="Ohm" accessMode="readWrite" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Phase resistance</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>7500</defaultDU>
+      <defaultPU>0.750</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>47900</maxDU>
+      <minPU>0</minPU>
+      <maxPU>4.790</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.phaseRes</refId>
+      </setAndHide>
+   </param>
+   <param name="directPhaseInd" symbolName="CFG_DIRECT_PHASE_IND_MH" displayName="Direct phase inductance" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="mH" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Motor D-Axis Inductance / Direct phase inductance</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10500</defaultDU>
+      <defaultPU>1.05</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>28657</maxDU>
+      <minPU>0</minPU>
+      <maxPU>2.8657</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FocController_F16.directInductance</refId>
+      </setAndHide>
+   </param>
+   <param name="quadraturePhaseInd" symbolName="CFG_QUADRATURE_PHASE_IND_MH" displayName="Quadrature phase inductance" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="mH" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Motor Q-Axis inductance / Quadrature phase inductance</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10500</defaultDU>
+      <defaultPU>1.05</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>28657</maxDU>
+      <minPU>0</minPU>
+      <maxPU>2.8657</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FocController_F16.quadratureInductance</refId>
+      </setAndHide>
+   </param>
+   <param name="averageInductance" symbolName="CFG_AVERAGE_INDUCTANCE_MH" displayName="Average inductance (Ls)" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="mH" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Average inductance (Ls)</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10500</defaultDU>
+      <defaultPU>1.05</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>28657</maxDU>
+      <minPU>0</minPU>
+      <maxPU>2.8657</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.phaseInd</refId>
+      </setAndHide>
+   </param>
+   <param name="polePairs" symbolName="CFG_POLE_PAIRS" displayName="Pole pairs" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" accessMode="readWrite" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Pole pairs</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>4</defaultDU>
+      <defaultPU>4</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="rotorMechInertia" symbolName="CFG_ROTOR_MECH_INERTIA_MGMSQUARE" displayName="Rotor inertia" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="mgm^2" accessMode="readWrite" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="none">
+      <description>Rotor inertia</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>24000</defaultDU>
+      <defaultPU>2.4</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1000000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="torqueConstant" symbolName="CFG_TORQUE_CONSTANT_NMPA" displayName="Torque constant" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="4" step="0.0001" physicalUnit="Nm/A" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" generatePattern="none">
+      <description/>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>350</defaultDU>
+      <defaultPU>0.035</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1000000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>100</maxPU>
+   </param>
+   <param name="frequency" symbolName="CFG_FREQUENCY_KHZ" displayName="PWM switching frequency" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="kHz" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>PWM frequency in kHz</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20</defaultDU>
+      <defaultPU>20</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>400</maxDU>
+      <minPU>0</minPU>
+      <maxPU>400</maxPU>
+      <setAndHide>
+         <refId>Ifx_MAS.Modulator_F16.frequency</refId>
+         <refId>Ifx_MHA.DriverGroup_F16.frequency</refId>
+      </setAndHide>
+   </param>
+   <param name="currentLoopFactor" symbolName="CFG_CURRENT_LOOP_FACTOR" displayName="Current loop factor" dynamicConfig="false" staticConfig="true" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Factor between PWM timebase and fast timebase. Current control loop is executed in fast timebase.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>3</defaultDU>
+      <defaultPU>3</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>25</maxDU>
+      <minPU>1</minPU>
+      <maxPU>25</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.DriverGroup_F16.currentLoopFactor</refId>
+      </setAndHide>
+   </param>
+   <param name="currentLoopFrequency" symbolName="CFG_CURRENT_LOOP_FREQUENCY_HZ" displayName="Current loop frequency" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="Hz" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description/>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>6666</defaultDU>
+      <defaultPU>6666</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="currentLoopPeriod" symbolName="CFG_CURRENT_LOOP_PERIOD_US" displayName="Current loop period" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="us" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description/>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>150</defaultDU>
+      <defaultPU>150</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>1</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="speedLoopFactor" symbolName="CFG_SPEED_LOOP_FACTOR" displayName="Speed loop factor" dynamicConfig="false" staticConfig="true" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Factor between fast timebase and mid timebase. Speed control loop is executed in mid timebase.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10</defaultDU>
+      <defaultPU>10</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>25</maxDU>
+      <minPU>1</minPU>
+      <maxPU>25</maxPU>
+   </param>
+   <param name="speedLoopFrequency" symbolName="CFG_SPEED_LOOP_FREQUENCY_HZ" displayName="Speed loop frequency" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="Hz" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Frequency of the speed control loop / mid timebase</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>666</defaultDU>
+      <defaultPU>666</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>0</minPU>
+      <maxPU>65535</maxPU>
+   </param>
+   <param name="speedLoopPeriod" symbolName="CFG_SPEED_LOOP_PERIOD_US" displayName="Speed loop period" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="us" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Period of the speed control loop / mid timebase</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1500</defaultDU>
+      <defaultPU>1500</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>1</minPU>
+      <maxPU>65535</maxPU>
+      <setAndHide>
+         <refId>Ifx_MHA.DriverGroup_F16.speedLoopPeriod</refId>
+      </setAndHide>
+   </param>
+   <param name="samplingTime" symbolName="CFG_SAMPLING_TIME_US" displayName="Sampling time" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="uint16_t" decimalPlaces="0" step="1" physicalUnit="us" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Sampling time</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>150</defaultDU>
+      <defaultPU>150</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>65535</maxDU>
+      <minPU>1</minPU>
+      <maxPU>65535</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FluxEstimator_F16.samplingTime</refId>
+         <refId>Ifx_MDA.FocController_F16.samplingTime</refId>
+         <refId>Ifx_MDA.IToFController_F16.samplingTime</refId>
+         <refId>Ifx_MDA.VToFController_F16.samplingTime</refId>
+      </setAndHide>
+   </param>
+   <param name="deadTime" symbolName="CFG_DEADTIME" displayName="Dead time" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.05" physicalUnit="us" accessMode="readWrite" changeWhileMotorRunning="true" isPartOfParSet="true" isPartOfParDownload="true" userLevel="1" generatePattern="none">
+      <description>This configures the value of the HighSide-LowSide switching dead-time</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>50</defaultDU>
+      <defaultPU>0.5</defaultPU>
+      <minDU>5</minDU>
+      <maxDU>200</maxDU>
+      <minPU>0.05</minPU>
+      <maxPU>2.00</maxPU>
+      <setAndHide>
+         <refId>Ifx_MAS.Modulator_F16.deadTime</refId>
+         <refId>Ifx_MHA.DriverGroup_F16.deadTime</refId>
+      </setAndHide>
+   </param>
+   <param name="currctrlAdjustmFactor" symbolName="CFG_CURRCTRL_ADJUSTM_FACTOR" displayName="Current control adjustment factor" dynamicConfig="false" staticConfig="true" dataTypeDU="uint16_t" dataTypeTU="uint16_t" dataTypePU="double" decimalPlaces="2" step="0.01" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description/>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>20</defaultDU>
+      <defaultPU>0.2</defaultPU>
+      <minDU>1</minDU>
+      <maxDU>100</maxDU>
+      <minPU>0.01</minPU>
+      <maxPU>1</maxPU>
+   </param>
+   <param name="currPiPropGain" symbolName="CFG_CURR_PI_PROPGAIN" displayName="Current pi proportional gain" dynamicConfig="false" staticConfig="true" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="3" step="0.001" physicalUnit="V/A" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Kp = (currctrl_adjustm_factor * L  * Fs/ 4)</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>350</defaultDU>
+      <defaultPU>0.350</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>157281600</maxDU>
+      <minPU>0</minPU>
+      <maxPU>157281.600</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FocController_F16.currentDPiPropGain</refId>
+         <refId>Ifx_MDA.FocController_F16.currentQPiPropGain</refId>
+      </setAndHide>
+   </param>
+   <param name="currPiIntegGain" symbolName="CFG_CURR_PI_INTEGGAIN" displayName="Current pi integral gain" dynamicConfig="false" staticConfig="true" dataTypeDU="uint32_t" dataTypeTU="uint32_t" dataTypePU="double" decimalPlaces="0" step="1" physicalUnit="V/As" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="1" generatePattern="none">
+      <description>Ki = (currctrl_adjustm_factor * R  * Fs/ 4)</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>250</defaultDU>
+      <defaultPU>250</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1048544000</maxDU>
+      <minPU>0</minPU>
+      <maxPU>1048544000</maxPU>
+      <setAndHide>
+         <refId>Ifx_MDA.FocController_F16.currentDPiIntegGainSamplingTime</refId>
+         <refId>Ifx_MDA.FocController_F16.currentQPiIntegGainSamplingTime</refId>
+      </setAndHide>
+   </param>
+   <param name="transitionMode" symbolName="CFG_TRANSITION_MODE" displayName="Transition mode" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readWrite" changeWhileMotorRunning="false" isPartOfParSet="true" isPartOfParDownload="false" userLevel="0" generatePattern="configDefine">
+      <description>Transition mode</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="DirectTransition" value="0" symbolName="IFX_MS_FOCSOLUTION_F16_TRANSITION_MODE_DIRECT_TRANSITION"/>
+      <enumEntry name="SmoothTransition" value="1" symbolName="IFX_MS_FOCSOLUTION_F16_TRANSITION_MODE_SMOOTH_TRANSITION"/>
+   </param>
+   <param name="includeStartangleIdent" symbolName="CFG_INCLUDE_STARTANGLE_IDENT" displayName="Include start angle identification" dynamicConfig="false" staticConfig="true" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" userLevel="2" generatePattern="configDefine">
+      <description>Enable feature start angle identification. Config define</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>0</minDU>
+      <maxDU>1</maxDU>
+      <minPU>0</minPU>
+      <maxPU>1</maxPU>
+   </param>
+   <param name="state" symbolName="p_status.state" displayName="State" index="0x5020" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This monitoring output represents the state of the FOC solution state machine</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>1</defaultDU>
+      <defaultPU>1</defaultPU>
+      <enumEntry name="init" value="0"/>
+      <enumEntry name="off" value="1"/>
+      <enumEntry name="standBy" value="2"/>
+      <enumEntry name="fault" value="3"/>
+      <enumEntry name="run" value="4"/>
+      <enumEntry name="rampDown" value="5"/>
+      <enumEntry name="startAngleIdent" value="6"/>
+   </param>
+   <param name="subState" symbolName="p_status.subState" displayName="Sub state" index="0x5021" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This monitoring output represents the substate of the FOC solution state machine</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="openLoop" value="0"/>
+      <enumEntry name="transitionUp" value="1"/>
+      <enumEntry name="closedLoop" value="2"/>
+      <enumEntry name="transitionDown" value="3"/>
+   </param>
+   <param name="actualControlMode" symbolName="p_status.actualControlMode" displayName="Actual control mode" index="0x5022" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This monitoring output represents control mode</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <enumEntry name="VtoF" value="0" symbolName="Ifx_MS_FocSolution_F16_ControlMode_vToF"/>
+      <enumEntry name="ItoF_Foc" value="1" symbolName="Ifx_MS_FocSolution_F16_ControlMode_foc "/>
+   </param>
+   <param name="estimatedSpeed" symbolName="p_output.estimatedSpeedQ15" displayName="Estimated speed" index="0x5023" dynamicConfig="true" staticConfig="false" subIndexCount="0" dataTypeDU="int16_t" dataTypeTU="int16_t" dataTypePU="int16_t" decimalPlaces="0" step="1" physicalUnit="rpm" accessMode="readOnly" generatePattern="memberInSelfStruct">
+      <description>This output shows the current estimated speed
+from the flux estimator.</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>0</defaultDU>
+      <defaultPU>0</defaultPU>
+      <minDU>-32767</minDU>
+      <maxDU>32767</maxDU>
+      <minPU>-4000</minPU>
+      <maxPU>4000</maxPU>
+   </param>
+</component>

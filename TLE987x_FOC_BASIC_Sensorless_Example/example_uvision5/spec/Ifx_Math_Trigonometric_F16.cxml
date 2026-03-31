@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<component xsdVersion="2.0" name="Trigonometric_F16" displayName="Trigonometric" library="Ifx_Math" includes="" multiInstance="true" compVersion="1.3.0" libraryVersion="1.3.0">
+   <param name="sinLutSize" symbolName="CFG_SIN_LUT_SIZE" dynamicConfig="false" staticConfig="true" displayName="Sine table size" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Sine table size</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10</defaultDU>
+      <defaultPU>10</defaultPU>
+      <enumEntry name="eight_bits" value="8"/>
+      <enumEntry name="ten_bits" value="10"/>
+      <enumEntry name="twelve_bits" value="12"/>
+   </param>
+   <param name="atanLutSize" symbolName="CFG_ATAN_LUT_SIZE" dynamicConfig="false" staticConfig="true" displayName="Atan table size" subIndexCount="0" dataTypeDU="uint8_t" dataTypeTU="uint8_t" dataTypePU="uint8_t" decimalPlaces="0" step="1" accessMode="readOnly" changeWhileMotorRunning="false" isPartOfParSet="false" isPartOfParDownload="false" userLevel="1" generatePattern="configDefine">
+      <description>Atan table size</description>
+      <targetEvent getValueDU="NULL" setValueDU="NULL"/>
+      <defaultDU>10</defaultDU>
+      <defaultPU>10</defaultPU>
+      <enumEntry name="eight_bits" value="8"/>
+      <enumEntry name="ten_bits" value="10"/>
+      <enumEntry name="twelve_bits" value="12"/>
+   </param>
+</component>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.0">
+    <checksum>24f63e957544558c2cd0d2a5703a5da8509087459906c0f694137050d3241be7</checksum>
+    <version label="V2.1.0"/>
+    <header file="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h" fullname="1"/>
+    <!--********************************************************************************-->
+    <!--                        Bridge Driver                                           -->
+    <!--********************************************************************************-->
+    <groupcontainer label="Bridge Driver" desc="Bridge Driver Parameters">
+        <treecontainer headerlabels="Structure;Settings;" columnwidths="450;150">
+            <checkbox label="Use module" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.ENABLE" svd="0" expand="1" default="1" uielement="branch" lockon="BDRV.CP_CTRL_STS.CP_EN=1;BDRV.CP_CLK_CTRL.CPCLK_EN=1;BDRV.HSx_LSx_OC_DIS=0">
+ 
+                <spinbox label="Execution period" suffix=" us" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.EXECUTION_PERIOD_US" default="1500"/>
+
+                <doublespinbox label="Maximum transition time from init to off state" suffix=" ms" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.TRANSITION_TIME_MS" svd="0" default="100" range="0;32000" />
+
+                <math define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.TRANSITION_TIME_CYCLES_TEMP" formula="round(IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.TRANSITION_TIME_MS
+                  *1000/(IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.EXECUTION_PERIOD_US))" svd="0" visible="false"></math>
+
+                <math define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.TRANSITION_TIME_CYCLES" header="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h" formula="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.TRANSITION_TIME_CYCLES_TEMP &lt; 1 ? 1 : IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.TRANSITION_TIME_CYCLES_TEMP" svd="0" visible="false" />
+
+                <combo label="Fault reaction on overvoltage" header="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.FAULT_REACTION_OVERVOLT" svd="0" default="label=Report and react" tooltip="faultReactionOvervoltage">
+                    <item label="Disable"           value="0" lockon="BDRV.CP_CTRL_STS.DRVx_VSDUP_DIS=1;BDRV.CP_CTRL_STS.DRVx_VCPUP_DIS=1" />
+                    <item label="Enable"            value="1" lockon="BDRV.CP_CTRL_STS.DRVx_VSDUP_DIS=1;BDRV.CP_CTRL_STS.DRVx_VCPUP_DIS=1" />
+                    <item label="Report only"       value="2" lockon="BDRV.CP_CTRL_STS.DRVx_VSDUP_DIS=1;BDRV.CP_CTRL_STS.DRVx_VCPUP_DIS=1" />
+                    <item label="Report and react"  value="3" lockon="BDRV.CP_CTRL_STS.DRVx_VSDUP_DIS=0;BDRV.CP_CTRL_STS.DRVx_VCPUP_DIS=0" />
+                </combo>
+                <combo label="Fault reaction on undervoltage" header="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.FAULT_REACTION_UNDERVOLT" svd="0" default="label=Report and react" tooltip="faultReactionUndervoltage">
+                    <item label="Disable"           value="0" lockon="BDRV.CP_CTRL_STS.DRVx_VSDLO_DIS=1;BDRV.CP_CTRL_STS.DRVx_VCPLO_DIS=1" />
+                    <item label="Enable"            value="1" lockon="BDRV.CP_CTRL_STS.DRVx_VSDLO_DIS=1;BDRV.CP_CTRL_STS.DRVx_VCPLO_DIS=1" />
+                    <item label="Report only"       value="2" lockon="BDRV.CP_CTRL_STS.DRVx_VSDLO_DIS=1;BDRV.CP_CTRL_STS.DRVx_VCPLO_DIS=1" />
+                    <item label="Report and react"  value="3" lockon="BDRV.CP_CTRL_STS.DRVx_VSDLO_DIS=0;BDRV.CP_CTRL_STS.DRVx_VCPLO_DIS=0" />
+                </combo>
+                <combo label="Fault output behavior" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.FAULT_OUT_BEHAVIOR" header="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h" svd="0" default="label=Uncontrolled freewheeling OFF" tooltip="faultOutBehavior">
+                    <item label="Uncontrolled freewheeling OFF" value="0"/>
+                </combo>
+                <checkbox label="Enable fault user callback" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.ENABLE_FAULT_OUT" uielement="branch" svd="0" header="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h">
+                    <edit label="Fault user callback" define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.FAULT_OUT" default="usrFaultCallback" header="Ifx_MHA_BridgeDrv_F16_TLE987_Cfg.h" svd="0" tooltip="faultUserCallback"/>
+                </checkbox>
+            </checkbox>
+        </treecontainer>
+    </groupcontainer>
+</ifxmlcfg>

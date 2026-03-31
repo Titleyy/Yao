@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsdVersion="2.0" name="example_project" version="2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../parameter_exchange_formats/project_specification.xsd">
+    <functionalGroup name="Motorcontrol">
+        <componentInstance sourceName="MctrlExample">
+            <instanceItem name="g_mctrlExampleParam" selfInstName="g_mctrlExample">
+                <valuePU paramName="useDefaultParamStruct">0</valuePU>
+            </instanceItem>
+        </componentInstance>
+        <componentInstance sourceName="Ifx_MS.FocSolution_F16">
+            <instanceItem name="g_focSolutionParam" selfInstName="FocDemoClosedLoop">
+            </instanceItem>
+        </componentInstance>
+        <componentInstance sourceName="Ifx_MAS.Modulator_F16">
+            <instanceItem name="g_modulatorParam" selfInstName="FocDemoClosedLoop.modulator"/>
+         </componentInstance>
+        <componentInstance sourceName="Ifx_MDA.FluxEstimator_F16">
+            <instanceItem name="g_fluxEstimatorParam" selfInstName="FocDemoClosedLoop.fluxEstimator"/>
+        </componentInstance>
+        <componentInstance sourceName="Ifx_MDA.VToFController_F16">
+            <instanceItem name="g_vToFControllerParam" selfInstName="FocDemoClosedLoop.vToF"/>
+        </componentInstance>
+        <componentInstance sourceName="Ifx_MDA.FocController_F16">
+            <instanceItem name="g_focControllerParam" selfInstName="FocDemoClosedLoop.focController"/>
+         </componentInstance>
+        <componentInstance sourceName="Ifx_MDA.IToFController_F16">
+            <instanceItem name="g_iToFParam" selfInstName="FocDemoClosedLoop.iToF"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_MHA.DriverGroup_F16">
+            <instanceItem name="g_driverGroupParam" selfInstName="FocDemoClosedLoop.driverGroup"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_MHA.BridgeDrv_F16_TLE987">
+            <instanceItem name="g_bridgeDrvParam" selfInstName="FocDemoClosedLoop.driverGroup.bridgeDrv"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_MHA.MeasurementADC_F16_TLE987">
+            <instanceItem name="g_measurementADCParam" selfInstName="FocDemoClosedLoop.driverGroup.measurementADC"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_MHA.PatternGen_F16_TLE987">
+            <instanceItem name="g_patternGenParam" selfInstName="FocDemoClosedLoop.driverGroup.patternGen"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_Math.AdvancedMath_F16">
+            <instanceItem name="g_advancedMathParam"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_Math.MotorControlMath_F16">
+            <instanceItem name="g_motorcontrolMathParam"/>
+         </componentInstance>
+         <componentInstance sourceName="Ifx_Math.Trigonometric_F16">
+            <instanceItem name="g_trigonometricMathParam"/>
+         </componentInstance>
+    </functionalGroup>
+
+    <parameterSpace name="MExT_Motor">
+        <instanceRef>g_mctrlExampleParam</instanceRef>
+        <instanceRef>g_focSolutionParam</instanceRef>
+        <instanceRef>g_fluxEstimatorParam</instanceRef>
+        <instanceRef>g_modulatorParam</instanceRef>
+        <instanceRef>g_vToFControllerParam</instanceRef>
+        <instanceRef>g_focControllerParam</instanceRef>
+        <instanceRef>g_iToFParam</instanceRef>
+        <instanceRef>g_driverGroupParam</instanceRef>
+        <instanceRef>g_bridgeDrvParam</instanceRef>
+        <instanceRef>g_measurementADCParam</instanceRef>
+        <instanceRef>g_patternGenParam</instanceRef>
+        <instanceRef>g_advancedMathParam</instanceRef>
+        <instanceRef>g_motorcontrolMathParam</instanceRef>
+        <instanceRef>g_trigonometricMathParam</instanceRef>
+    </parameterSpace>
+
+    <dependencies>
+        <item>./</item>
+        <item>${MSD_SHARED_LIB}/ifx_motorcontrol_v1</item>
+        <item>${MSD_SHARED_LIB}/ifx_hw_support_tle987_v1</item>
+        <item>${MSD_SHARED_LIB}/ifx_common_v1</item>
+    </dependencies>
+
+    <cfgOutputFolder>${MSD_BUILD_DIR}</cfgOutputFolder>
+</project>

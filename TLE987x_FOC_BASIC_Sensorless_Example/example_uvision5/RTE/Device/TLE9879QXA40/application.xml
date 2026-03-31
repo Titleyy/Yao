@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.2">
+    <checksum>8f40426681030eea617c2d55c8cb17f9a194f12a704ad0089ae8046410324070</checksum>
+    <version label="V2.1.0" />
+    <showprogressbar value="1" />
+    <usesPython />
+    <tabcontainer>
+        <tabcontainer label="Application">
+            <gridcontainer label="General">
+                <!-- TOP LEFT CONTAINER -->
+                <groupcontainer visible="false">
+                    <checkbox label="Use Module" define="APP_CFG.ENABLE" svd="0" default="1" lockon="IFX_MS_FOCSOLUTION_F16_CFG.FREQUENCY_KHZ=APP_CFG.FREQUENCY_KHZ;IFX_MS_FOCSOLUTION_F16_CFG.SPEED_LOOP_FACTOR=APP_CFG.SPEED_LOOP_FACTOR;IFX_MS_FOCSOLUTION_F16_CFG.CURRENT_LOOP_FACTOR=APP_CFG.CURRENT_LOOP_FACTOR" />
+                </groupcontainer>
+                <groupcontainer label="Parameter">
+                    <treecontainer headerlabels="Structure;Settings;">
+                        <!-- Frequency -->
+                        <spinbox label="PWM Frequency" define="APP_CFG.FREQUENCY_KHZ" suffix=" kHz" svd="0" default="20" range="1;40">
+                            <action event="changed" cmd="setDef" data="IFX_MS_FOCSOLUTION_F16_CFG.FREQUENCY_KHZ=APP_CFG.FREQUENCY_KHZ" />
+                        </spinbox>
+
+                        <!-- Current loop execution -->
+                        <spinbox label="Current Loop Factor" define="APP_CFG.CURRENT_LOOP_FACTOR" svd="0" default="3" range="1;25">
+                            <action event="changed" cmd="setDef" data="IFX_MS_FOCSOLUTION_F16_CFG.CURRENT_LOOP_FACTOR=APP_CFG.CURRENT_LOOP_FACTOR" />
+                        </spinbox>
+
+
+                        <math label="Current Loop Frequency" unit=" Hz" define="APP_CFG.CURRENT_LOOP_FREQUENCY_HZ" formula="IFX_MS_FOCSOLUTION_F16_CFG.CURRENT_LOOP_FREQUENCY_HZ" svd="0" />
+                        <math label="Current Loop Period" unit=" us" define="APP_CFG.CURRENT_LOOP_PERIOD_US" format="%f" formula="IFX_MS_FOCSOLUTION_F16_CFG.CURRENT_LOOP_PERIOD_US" svd="0" />
+
+                        <!-- Speed loop execution -->
+                        <spinbox label="Speed Loop Factor" define="APP_CFG.SPEED_LOOP_FACTOR" svd="0" default="10" range="1;25">
+                            <action event="changed" cmd="setDef" data="IFX_MS_FOCSOLUTION_F16_CFG.SPEED_LOOP_FACTOR=APP_CFG.SPEED_LOOP_FACTOR" />
+                        </spinbox>
+
+                        <math label="Speed Loop Frequency" unit=" Hz" define="APP_CFG.SPEED_LOOP_FREQUENCY_HZ" formula="IFX_MS_FOCSOLUTION_F16_CFG.SPEED_LOOP_FREQUENCY_HZ" svd="0"></math>
+                        <math label="Speed Loop Period" unit=" us" define="APP_CFG.SPEED_LOOP_PERIOD_US" format="%f" formula="IFX_MS_FOCSOLUTION_F16_CFG.SPEED_LOOP_PERIOD_US" svd="0"></math>
+                        <math label="Sampling Time" unit=" us" define="APP_CFG.SAMPLING_TIME_US" formula="IFX_MS_FOCSOLUTION_F16_CFG.SAMPLING_TIME_US" svd="0"></math>
+                    </treecontainer>
+                </groupcontainer>
+            </gridcontainer>
+        </tabcontainer>
+
+        <includepath path="../../../MCTRL/cfgwiz/" />
+        <include>Ifx_MS_FocSolution_F16.xml</include>
+
+        <tabcontainer label="MCTRL Math">
+            <includepath path="../../../Math/cfgwiz/" />
+            <include>Ifx_Math_AdvancedMath_F16.xml</include>
+
+            <includepath path="../../../Math/cfgwiz/" />
+            <include>Ifx_Math_Trigonometric_F16.xml</include>
+
+            <includepath path="../../../Math/cfgwiz/" />
+            <include>Ifx_Math_MotorControlMath_F16.xml</include>
+        </tabcontainer>
+
+        <tabcontainer label="MCTRL Actuator and Sensor">
+            <includepath path="../../../MCTRL/cfgwiz/" />
+            <include>Ifx_MAS_Modulator_F16.xml</include>
+        </tabcontainer>
+
+        <tabcontainer label="MCTRL Drive Algorithm">
+            <includepath path="../../../MCTRL/cfgwiz/" />
+            <include>Ifx_MDA_FluxEstimator_F16.xml</include>
+
+            <includepath path="../../../MCTRL/cfgwiz/" />
+            <include>Ifx_MDA_FocController_F16.xml</include>
+
+            <includepath path="../../../MCTRL/cfgwiz/" />
+            <include>Ifx_MDA_IToFController_F16.xml</include>
+
+            <includepath path="../../../MCTRL/cfgwiz/" />
+            <include>Ifx_MDA_VToFController_F16.xml</include>
+
+            <includepath path="../../../MCTRL/cfgwiz/" />
+            <include>Ifx_MDA_StartAngleIdent_F16.xml</include>
+        </tabcontainer>
+
+        <tabcontainer label="MCTRL Hardware Abstraction">
+            <includepath path="../../../MHA/cfgwiz/" />
+            <include>Ifx_MHA_DriverGroup_F16.xml</include>
+
+            <includepath path="../../../MHA/cfgwiz/" />
+            <include>Ifx_MHA_BridgeDrv_F16_TLE987.xml</include>
+
+            <includepath path="../../../MHA/cfgwiz/" />
+            <include>Ifx_MHA_MeasurementADC_F16_TLE987.xml</include>
+
+            <includepath path="../../../MHA/cfgwiz/" />
+            <include>Ifx_MHA_PatternGen_F16_TLE987.xml</include>
+        </tabcontainer>
+
+        <includepath path="." />
+        <include>ICW_TLE987x.xml</include>
+
+    </tabcontainer>
+</ifxmlcfg>

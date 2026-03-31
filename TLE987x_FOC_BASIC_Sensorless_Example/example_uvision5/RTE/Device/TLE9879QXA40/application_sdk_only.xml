@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifxmlcfg version="2.7.2">
+    <checksum>5bdd4445966c3584a7a71e696449ff25b945f260742c49e5de0969a5dd767fac</checksum>
+    <version label="V2.1.0" />
+    <showprogressbar value="1" />
+    <usesPython />
+    <tabcontainer>
+        <verticalcontainer label="Configure Peripherals for MExT MCL">
+            <gridcontainer columns="1">
+                <text wordwrap="1"
+                label="The MExT motor control library requires peripheral configuration to be aligned with the configuration of the motor control components to function properly (e.g. PWM frequency). The peripheral default configuration is set via ConfigWizard when the checkboxes below are checked. The motor control components are configured either in the Motix Solution Designer GUI or text-based in example_tle987x.psxml. The init functions of the motor control hardware abstraction layer (e.g. Ifx_MHA_PatternGen_F16_TLE987_init) overwrite the listed peripheral default configurations with parameters from motor control components. In ConfigWizard GUI (e.g. CCU6 Timer12 frequency corresponding to the PWM frequency) you will still only see the locked default values. For advanced use cases it is possible to disable these locks by unchecking the respective checkbox in this tab." />
+                                <treecontainer headerlabels="Structure;Settings;">
+                    <checkbox
+                        label="BDRV (used by Ifx_MHA_BridgeDrv_F16_TLE987 to control power stage)"
+                        define="IFX_MHA_BRIDGEDRV_F16_TLE987_CFG.ENABLE" svd="0" expand="0"
+                        default="1" uielement="branch"
+                        lockon="BDRV.CP_CTRL_STS.CP_EN=1;BDRV.CP_CLK_CTRL.CPCLK_EN=1;BDRV.HSx_LSx_OC_DIS=0;BDRV.CP_CTRL_STS.DRVx_VSDUP_DIS=0;BDRV.CP_CTRL_STS.DRVx_VCPUP_DIS=0;BDRV.CP_CTRL_STS.DRVx_VSDLO_DIS=0;BDRV.CP_CTRL_STS.DRVx_VCPLO_DIS=0">
+                        <text
+                            label="Fault reaction overvoltage default is report and react. Parameter faultReactionOvervolt will overwrite this setting." />
+                        <text
+                            label="Fault reaction undervoltage default is report and react. Parameter faultReactionUndervolt will overwrite this setting." />
+                    </checkbox>
+                    <checkbox
+                        label="GPT12E, CCU6, GPT2 (used by Ifx_MHA_DriverGroup_F16_TLE987 for time base configuration)"
+                        define="IFX_MHA_DRIVERGROUP_F16_CFG.ENABLE" svd="0" expand="0"
+                        default="1" uielement="branch"
+                        lockon="GPT12E.T6CON.T6SR=1;GPT12E.TEMP_CAPREL_SEL=1;GPT12E.T6_INT_EN=1;SCU.GPT12IEN.T6IE=1;GPT12E.CAPREL_TIME=1501;CCU6.T12_OM_INT_EN=1;CCU6.IEN.ENT12OM=1;CCU6.T12_PM_INT_EN=1;CCU6.IEN.ENT12PM=1;GPT2.T6_CALLBACK=Ifx_FOC_speedLoop_callback;CCU6.T12_OM_CALLBACK=Ifx_FOC_oneMatchCallback;CCU6.T12_PM_CALLBACK=Ifx_FOC_periodMatchCallback">
+                        <text
+                            label="Speed loop period default is 1500us. Parameter speedLoopPeriod will overwrite this setting." />
+                    </checkbox>
+                    <checkbox
+                        label="ADC1, CSA, TIMER3 (used by Ifx_MHA_MeasurementADC_F16_TLE987 to measure shunt current and dc link voltage)"
+                        define="IFX_MHA_MEASUREMENTADC_F16_TLE987_CFG.ENABLE" svd="0" expand="0"
+                        default="1" uielement="branch"
+                        lockon="MF.CSA_CTRL.EN=1;ADC1.GLOBCTR[8]=1;ADC1.SQ_FB.SQ_RUN.label=Sequencer Mode;ADC1.SQ1_4.SQ1[6]=1;MF.VMON_SEN_CTRL.VMON_SEN_PD_N=1;ADC1.CHx_ESM.TRIG_SEL.label=CCU6 COUT63;ADC1.CHx_ESM.ESM_0[1]=1;TIMER3.CTRL.T3_PD_N=1;TIMER3.MODE_CONF.T3M=1;TIMER3.MODE_CONF.T3_SUBM[0]=1;TIMER3.T3_TRIGG_CTRL.T3_TRIGG_INP_SEL=3;TIMER3.T3_TRIGG_CTRL.T3_RES_CONF=1;ADC1.CHx_EIM.TRIG_SEL=6;ADC1.CHx_EIM.CHx=1;ADC1.ESM_INT_EN=0;ADC1.EIM_INT_EN=0;ADC1.CHx_EIM.REP=0;ADC1.RES_OUT_EIM.WFR8=0;CPU.NVIC_ISER0.Int_ADC1=0;ADC1.GLOBCTR.DIVA=1;MF.CSA_CTRL.GAIN=3;MF.VMON_SEN_CTRL.VMON_SEN_SEL_INRANGE=1">
+                        <text
+                            label="CSA gain default is 60. Parameter csaGain will overwrite this setting." />
+<text
+                            label="VDH Attenuator Measurement Range default is 0V to 30V. Parameter vmonSenSelInrange will overwrite this setting." />
+                    </checkbox>
+                    <checkbox
+                        label="CCU6 (used by Ifx_MHA_PatternGen_F16_TLE987 to generate 3-phase PWM pattern)"
+                        define="IFX_MHA_PATTERNGEN_F16_TLE987_CFG.ENABLE" svd="0" expand="0"
+                        default="1" uielement="branch"
+                        lockon="CCU6.DEADTIME=0.5;CCU6.T12DTC.DTE0=1;CCU6.T12DTC.DTE1=1;CCU6.T12DTC.DTE2=1;CCU6.T12_PERIOD_SEL=2;CCU6.T12_FREQ=20000;CCU6.TCTR0.CTM.label=Center-aligned;CCU6.TCTR2.T12SSC.label=disabled;CCU6.T12MSEL[3:0].label=(0b0011) Compare output on CC60/COUT60;CCU6.MODCTR.T12MODEN[0]=1;CCU6.MODCTR.T12MODEN[1]=1;CCU6.MODCTR.T13MODEN[0]=0;CCU6.MODCTR.T13MODEN[1]=0;CCU6.T12MSEL[7:4].label=(0b0011) Compare output on CC61/COUT61;CCU6.MODCTR.T12MODEN[2]=1;CCU6.MODCTR.T12MODEN[3]=1;CCU6.MODCTR.T13MODEN[2]=0;CCU6.MODCTR.T13MODEN[3]=0;CCU6.T12MSEL[11:8].label=(0b0011) Compare output on CC62/COUT62;CCU6.MODCTR.T12MODEN[4]=1;CCU6.MODCTR.T12MODEN[5]=1;CCU6.MODCTR.T13MODEN[4]=0;CCU6.MODCTR.T13MODEN[5]=0;CCU6.MODCTR.MCMEN=1;CCU6.INP.INPT12.label=SR1;CCU6.NVIC[1]=1;CCU6.T13_PERIOD_SEL.label=...as clock ticks;CCU6.T13_TICK[15:0]=998;CCU6.TCTR2.T13SSC.label=enabled;CCU6.TCTR2.T13TED.label=T12 any counting direction;CCU6.TCTR2.T13TEC.label=T12 Zero Match;CCU6.TCTR2.T13RSEL.label=disabled;CCU6.TCTR0.T13CLK.label=div 1;CCU6.TCTR0.T13PRE=0;CCU6.MODCTR.ECT13O=1;CCU6.TRPCTR.TRPEN[0]=0;CCU6.TRPCTR.TRPEN[1]=0;CCU6.TRPCTR.TRPEN[2]=0;CCU6.TRPCTR.TRPEN[3]=0;CCU6.TRPCTR.TRPEN[4]=0;CCU6.TRPCTR.TRPEN[5]=0;CCU6.TRPCTR.TRPM2=0;CCU6.TRPCTR.TRPPEN=0">
+                        <text
+                            label="Deadtime default is 500ns. Parameter deadTime will overwrite this setting." />
+                        <text
+                            label="PWM frequency default is 20kHz. Parameter frequency will overwrite this setting." />
+                        <text
+                            label="Fault reaction on trap is disabled by default. Parameter faultReactionTrap will overwrite this setting." />
+                    </checkbox>
+                </treecontainer>
+            </gridcontainer>
+        </verticalcontainer>
+        <includepath path="." />
+        <include>ICW_TLE987x.xml</include>
+    </tabcontainer>
+</ifxmlcfg>
